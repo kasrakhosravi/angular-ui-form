@@ -1,0 +1,11 @@
+ui-fieldset {
+  display: block;
+  margin-bottom: 30px;
+}
+.form-fieldset {
+  &:after {
+    clear: both;
+    display: block;
+    content: '';
+  }
+}

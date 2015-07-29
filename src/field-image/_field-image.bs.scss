@@ -1,0 +1,95 @@
+ui-field-image {
+  .thumbnail {
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.04);
+    width: 120px;
+    height: 120px;
+    position: relative;
+    overflow: hidden;
+
+    &.failed {
+      background-color: rgba(203, 39, 35, 0.2);
+      border-color: rgb(203, 39, 35);
+
+      img {
+        opacity: 0.25;
+      }
+    }
+
+    .retry {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 40px;
+      background: transparent;
+      border: none;
+      transform: translate(-50%, -50%);
+      height: 50px;
+      width: 40px;
+      padding: 0;
+      color: #d43f3a;
+    }
+    
+    &:hover {
+      .delete {
+        opacity: 1;
+      }
+    }
+    
+    .delete {
+      color: white;
+      text-shadow: 0 0 2px black, 0 0 2px black, 0 0 10px black;
+      font-weight: bold;
+      font-size: 25px;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      border-radius: 50%;
+      text-decoration: none;
+      cursor: pointer;
+      line-height: 20px;
+      z-index: 100;
+      opacity: 0;
+    }
+
+    .progress {
+      position: absolute;
+      width: 80%;
+      bottom: 10px;
+      left: 50%;
+      transform: translate(-50%, 0);
+
+      span {
+        text-shadow: 1px 1px 2px black;
+        padding-right: 7px;
+        font-size: 10px;
+      }
+    }
+  }
+
+  .gallery {
+    min-height: 140px;
+    position: relative;
+
+    .instructions {
+      color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    > li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      float: left;
+
+      .rtl & {
+        float: right;
+        margin-right: auto;
+        margin-left: 20px;
+      }
+    }
+  }
+}

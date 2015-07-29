@@ -1,0 +1,21 @@
+<ui-field-row>
+    <!-- Angular UI Tree -->
+    <div ui-tree="" callbacks="vm.callbacks" data-drag-delay="500" data-drag-enabled="false">
+        <ol ui-tree-nodes="" ng-model="vm.nodes">
+            <li class="tree-node"
+                ui-tree-node=""
+                ng-repeat="node in vm.nodes"
+                ng-include="'forms/field-tree/field-tree-node.html'"
+                ng-class="{
+                    'tree-node-leaf': !node.children || !node.children.length,
+                    'tree-node-last': $last,
+                    'tree-node-open': !collapsed,
+                    'tree-node-closed': collapsed
+                }">
+            </li>
+        </ol>
+    </div>
+
+    <!-- Loading spinner when fetching remote values -->
+    <ui-form-loading ng-if="vm.loading"></ui-form-loading>
+</ui-field-row>

@@ -1,0 +1,11 @@
+<ui-field-row>
+    <ul class="field-set">
+        <li ng-repeat="$item in vm.data track by $index" class="row">
+            <ui-fieldset class="col-sm-11" property="{{ $index }}">
+                <ui-transclude-here></ui-transclude-here>
+            </ui-fieldset>
+            <a class="col-sm-1 btn icon icon-close pull-right flip" ng-click="vm.removeItem($index)"></a>
+        </li>
+    </ul>
+    <ui-toolbar buttons="vm.toolbar"></ui-toolbar>
+</ui-field-row>

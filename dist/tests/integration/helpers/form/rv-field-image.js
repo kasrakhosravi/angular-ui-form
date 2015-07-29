@@ -1,0 +1,2 @@
+var DefaultHelper=require("./default");module.exports={setData:function(a,b){for(var c in b)if(b.hasOwnProperty(c)){var d=a.getElement().element(by.css("input[type=file]")).sendKeys(b[c]);browser.sleep(3e3)}return d},getData:function(a){var b=a.getElement();return b.getAttribute("multiple").then(function(b){return null===b?a.getElement().element(by.model("vm.data")).element(by.css("img")).getAttribute("value"):[]})},getErrors:DefaultHelper.getErrors};
+//# sourceMappingURL=rv-field-image.js.map

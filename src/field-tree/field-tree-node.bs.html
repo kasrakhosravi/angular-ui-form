@@ -1,0 +1,22 @@
+<i class="tree-node-icon"
+   ng-click="node.children.length > 0 && toggle(this)">
+</i>
+<div class="tree-node-anchor"
+   ng-click="vm.toggleNode(node)">
+    <i ng-if="vm.selectedNodes.indexOf(node) > -1" class="text-info fa fa-check"></i>
+    <i ng-if="node.children.length > 0" class="text-muted fa fa-folder"></i>
+    {{ node[vm.labelProperty] }}
+</div>
+<ol ui-tree-nodes="" ng-model="node.children" ng-class="{ 'hidden': collapsed }">
+    <li class="tree-node"
+        ui-tree-node=""
+        ng-repeat="node in node.children"
+        ng-include="'forms/field-tree/field-tree-node.html'"
+        ng-class="{
+            'tree-node-leaf': !node.children || !node.children.length,
+            'tree-node-last': $last,
+            'tree-node-open': !collapsed,
+            'tree-node-closed': collapsed
+        }">
+    </li>
+</ol>
