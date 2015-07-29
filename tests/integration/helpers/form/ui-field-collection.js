@@ -3,17 +3,8 @@ var util = require('../util');
 var FormPageObject = require('../form.po');
 var DefaultHelper = require('./default');
 
-/**
- * @type {{setData: Function, getData: Function}}
- */
 module.exports = {
 
-    /**
-     * @param {FormPageObject} pageObject
-     * @param {*} data
-     *
-     * @return {Promise}
-     */
     setData: function(pageObject, data) {
         var formElement = pageObject.getElement(),
             addButton = formElement.element(by.css('.field-collection-add-button'));
@@ -37,11 +28,6 @@ module.exports = {
         });
     },
 
-    /**
-     * @param {FormPageObject} pageObject
-     *
-     * @return {Promise}
-     */
     getData: function(pageObject) {
         var deferred = protractor.promise.defer(),
             children = pageObject.getElement().all(by.xpath('./ui-field-row/div/div/ng-transclude/ul/li')),
@@ -67,11 +53,6 @@ module.exports = {
         return deferred.promise;
     },
 
-    /**
-     * @param {FormPageObject} pageObject
-     *
-     * @return {Promise}
-     */
     clearData: function(pageObject) {
         pageObject.children = [];
 
