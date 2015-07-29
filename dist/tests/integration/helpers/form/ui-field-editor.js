@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var util = require('../util');
+var DefaultHelper = require('./default');
 
 /**
  * This is the default form data-helper which is used for most of our fields.
@@ -52,5 +53,19 @@ module.exports = {
                     return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
                 });
         }
-    }
+    },
+
+    clearData: function(pageObject) {
+        var element = pageObject.getElement().element(by.css('[contenteditable]')),
+            result;
+
+        result = element
+            .sendKeys(protractor.Key.chord(protractor.Key.CONTROL, "a"))
+            .sendKeys(protractor.Key.BACK_SPACE)
+            .clear();
+
+        return result;
+    },
+
+    getErrors: DefaultHelper.getErrors
 };

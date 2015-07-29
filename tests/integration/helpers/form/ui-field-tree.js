@@ -12,6 +12,7 @@ module.exports = {
      * @return {Promise}
      */
     setData: function(pageObject, data) {
+        // TODO Implement.
         return protractor.promise.when(true);
     },
 
@@ -23,6 +24,7 @@ module.exports = {
     getData: function(pageObject) {
         var formElement = pageObject.getElement();
 
+        // TODO: Implement a reliable way to get multiple options of a tree
         return formElement.getAttribute('multiple').then(function (multiple) {
             if (null === multiple) {
                 return ''; // TODO getDataSingle();
@@ -32,5 +34,9 @@ module.exports = {
         });
     },
 
+    clearData: function() {
+        // TODO Implement.
+        return protractor.promise.when(true);
+    },
     getErrors: DefaultHelper.getErrors
 };

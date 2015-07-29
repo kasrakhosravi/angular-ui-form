@@ -48,7 +48,7 @@ ui-form-loading .svg-loader {
 --------------------------------------------------------------*/
 ui-fieldset {
   display: block;
-  margin-bottom: 30px; }
+  margin-bottom: 15px; }
 
 .form-fieldset:after {
   clear: both;

@@ -16,24 +16,25 @@ module.exports = {
      */
     setData: function(pageObject, data) {
         if (pageObject.children.length > 0) {
-            return _.each(pageObject.children, function (child) {
-                return child.getProperty().then(function (property) {
+            return util.walkByPromise(pageObject.children, function (childPageObject) {
+                return childPageObject.getProperty().then(function (property) {
                     // If property does not exist it means child field needs direct parent data.
                     if (property) {
                         if (typeof data[property] !== 'undefined') {
-                            return child.setData(data[property]);
+                            return childPageObject.setData(data[property]);
                         } else {
                             return protractor.promise.when(true);
                         }
                     } else {
-                        return child.setData(data);
+                        return childPageObject.setData(data);
                     }
                 });
             });
         } else {
             var element = pageObject.getElement().element(by.model('vm.data'));
-                element.sendKeys(protractor.Key.chord(protractor.Key.CONTROL, "a")).sendKeys(protractor.Key.BACK_SPACE);
-                element.clear();
+
+            element.sendKeys(protractor.Key.chord(protractor.Key.CONTROL, "a")).sendKeys(protractor.Key.BACK_SPACE);
+            element.clear();
 
             return element.sendKeys(data);
         }
@@ -85,6 +86,24 @@ module.exports = {
             return deferred.promise;
         } else {
             return pageObject.getElement().element(by.model('vm.data')).getAttribute('value');
+        }
+    },
+
+    /**
+     * @param pageObject
+     * @returns {Promise}
+     */
+    clearData: function(pageObject) {
+        if (pageObject.children.length > 0) {
+            return util.walkByPromise(pageObject.children, function (childPageObject) {
+                return childPageObject.clearData();
+            });
+        } else {
+            return pageObject.getElement()
+                .element(by.model('vm.data'))
+                .sendKeys(protractor.Key.chord(protractor.Key.CONTROL, "a"))
+                .sendKeys(protractor.Key.BACK_SPACE)
+                .clear();
         }
     },
 

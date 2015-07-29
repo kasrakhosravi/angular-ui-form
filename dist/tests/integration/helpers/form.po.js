@@ -92,11 +92,14 @@ FormPageObject.prototype.getHelper = function () {
 /**
  * Sets form data using appropriate field-helper.
  *
- * @param {*} data
+ * @param {*...} data1, data2, ... Sometimes form elements will change based on input data,
+ *                                  so if that's the case you can pass input in different batches
+ *                                  then this helper sets those batches one by one and waits for the changes before trying to set different batches.
  * @returns {Promise}
  */
-FormPageObject.prototype.setData = function(data) {
-    var me = this;
+FormPageObject.prototype.setData = function() {
+    var me = this,
+        args = arguments;
 
     return browser.driver.call(function () {
         return me
@@ -105,7 +108,9 @@ FormPageObject.prototype.setData = function(data) {
                 return me.getHelper();
             })
             .then(function (helper) {
-                return helper.setData(me, data);
+                return util.walkByPromise(args, function (data) {
+                    return helper.setData(me, data);
+                });
             });
     });
 };
@@ -126,6 +131,26 @@ FormPageObject.prototype.getData = function() {
             })
             .then(function (helper) {
                 return helper.getData(me);
+            });
+    });
+};
+
+/**
+ * Clears a field data using appropriate field-helper.
+ *
+ * @returns {*}
+ */
+FormPageObject.prototype.clearData = function() {
+    var me = this;
+
+    return browser.driver.call(function () {
+        return me
+            .buildChildrenPageObjects()
+            .then(function () {
+                return me.getHelper();
+            })
+            .then(function (helper) {
+                return helper.clearData(me);
             });
     });
 };
