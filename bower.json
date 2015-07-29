@@ -6,8 +6,7 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests",
-    "examples"
+    "tests"
   ],
   "authors": [
     "aramalipoor <aram.alipoor@gmail.com>"
