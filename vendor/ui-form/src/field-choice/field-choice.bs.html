@@ -1,0 +1,36 @@
+<ui-field-row>
+
+    <!-- Single value select without expanding -->
+    <select ng-if="!vm.multiple() && !vm.expanded()"
+            class="form-control"
+            ng-model="vm.data"
+            ng-options="option[vm.valueProperty].toString() as option[vm.labelProperty] | translate for option in vm.options">
+    </select>
+
+    <!-- Multiple value select without expanding -->
+    <select ng-if="vm.multiple() && !vm.expanded()"
+        class="form-control"
+        ng-model="vm.data"
+        multiple
+        ng-options="option[vm.valueProperty].toString() as option[vm.labelProperty] | translate for option in vm.options">
+    </select>
+
+    <!-- Single value select via radio button -->
+    <div ng-if="!vm.multiple() && vm.expanded()"
+         class="form">
+        <label ng-repeat="option in vm.options">
+            <input type="radio" ng-model="vm.data" value=" {{ option[vm.valueProperty].toString() }} "> {{ option[vm.labelProperty] | translate }}
+        </label><br />
+    </div>
+
+    <!-- Multiple value select via checkbox button -->
+    <div ng-if="vm.multiple() && vm.expanded()"
+         class="form">
+        <label ng-repeat="option in vm.options">
+            <input type="checkbox" ng-model="vm.data[$index]" value=" {{ option[vm.valueProperty].toString() }} "> {{ option[vm.labelProperty] | translate }}
+        </label><br />
+    </div>
+
+    <!-- Loading spinner when fetching remote values -->
+    <ui-form-loading ng-if="vm.loading"></ui-form-loading>
+</ui-field-row>

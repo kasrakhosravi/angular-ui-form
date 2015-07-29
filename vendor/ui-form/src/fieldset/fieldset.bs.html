@@ -1,0 +1,9 @@
+<div class="form-fieldset">
+    <div class="fieldset-legend col-sm-2" ng-class="{ 'hidden': !vm.legend() }">
+        <span class="h3">{{ vm.legend().title | translate }}</span>
+        <p class="text-muted">{{ vm.legend().info | translate }}</p>
+    </div>
+    <div class="fieldset-controls" ng-class="{ 'col-sm-10' : vm.legend() }">
+        <ui-transclude-here></ui-transclude-here>
+    </div>
+</div>

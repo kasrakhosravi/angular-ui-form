@@ -1,0 +1,51 @@
+<ui-field-row>
+    <div ui-field-image-uploader>
+
+        <!-- Gallery of all current & uploading items -->
+        <ul class="gallery clearfix">
+
+            <!-- If single-item image field -->
+            <li ng-if="!vm.multiple() && vm.data">
+                <div class="thumbnail">
+                    <img ng-src="{{ vm.data | thumbnail: 'admin_upload_preview' }}" />
+                    <a ng-click="vm.removeImage()" class="delete">&times;</a>
+                </div>
+            </li>
+
+            <!-- If multiple-item image field -->
+            <li ng-if="vm.multiple()" ng-repeat="image in vm.data track by $index">
+                <div class="thumbnail">
+                    <img ng-src="{{ image | thumbnail: 'admin_upload_preview' }}" />
+                    <a ng-click="vm.removeImage(image)" class="delete">&times;</a>
+                </div>
+            </li>
+
+            <!-- Items in upload queue -->
+            <li ng-repeat="item in queue track by item.id" tooltip="{{ item.file.lastError }}" tooltip-enable="item.file.status === plupload.FAILED">
+                <div class="thumbnail" ng-class="{ 'failed': item.file.status === plupload.FAILED }">
+                    <a ng-click="cancelUpload(item)" class="delete">&times;</a>
+                    <ui-field-image-preview image="item.file"></ui-field-image-preview>
+                    <progressbar ng-if="item.file.status === plupload.UPLOADING" max="100" value="item.percent" type="info">{{ item.percent }}%</progressbar>
+                    <button ng-if="item.file.status === plupload.FAILED" class="btn btn-danger retry" ng-click="retryUpload(item)"><i class="glyphicon glyphicon-refresh"></i></button>
+                </div>
+            </li>
+
+            <!-- Help when there's nothing in gallery -->
+            <li class="instructions" ng-if="vm.multiple() ? (!vm.data.length && !queue.length) : (!vm.data)">
+                {{ 'ui.form.field.image.instructions' | translate }}
+            </li>
+        </ul>
+
+        <!-- Buttons of our image field -->
+        <div class="btn-group">
+            <button class="btn btn-default field-image-upload-button">
+                <i class="glyphicon glyphicon-upload"></i>
+                {{ 'ui.form.field.image.upload_button' | translate }}
+            </button>
+            <button ng-if="vm.browseButton()" ng-click="vm.browseButton()(vm, $scope)" class="btn btn-default field-image-browser-button">
+                <i class="glyphicon glyphicon-folder-open"></i>
+                {{ 'ui.form.field.image.browse_button' | translate }}
+            </button>
+        </div>
+    </div>
+</ui-field-row>

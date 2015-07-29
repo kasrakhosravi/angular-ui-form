@@ -1,0 +1,7 @@
+<ui-field-row>
+    <div class="input-group">
+        <span class="input-group-addon" ng-if="vm.append()">{{ vm.append() }}</span>
+        <input type="text" class="form-control" ng-model="vm.data" fcsa-number="{ preventInvalidInput: true }" />
+        <span class="input-group-addon" ng-if="vm.prepend()">{{ vm.prepend() }}</span>
+    </div>
+</ui-field-row>

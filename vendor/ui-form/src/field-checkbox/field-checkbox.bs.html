@@ -1,0 +1,12 @@
+<div class="form-group" ng-class="{ 'has-error': vm.errors.errors.length }">
+    <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+            <label ng-if="vm.label">
+                <input type="checkbox" class="checkbox-inline" ng-model="vm.data" ng-true-value=" '1' "> {{ ::vm.label | translate }}
+            </label>
+        </div>
+        <span ng-repeat="error in vm.errors.errors track by $index" class="help-block">
+            {{  error | translate }}
+        </span>
+    </div>
+</div>

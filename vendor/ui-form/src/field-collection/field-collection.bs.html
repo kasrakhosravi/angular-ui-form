@@ -1,0 +1,16 @@
+<ui-field-row>
+    <ul class="field-set">
+        <li ng-repeat="$item in vm.data track by $index" class="row">
+            <ui-fieldset class="col-sm-11" property="{{ $index }}">
+                <ui-transclude-here></ui-transclude-here>
+            </ui-fieldset>
+            <a class="col-sm-1 btn icon icon-close pull-right flip" ng-click="vm.removeItem($index)"></a>
+        </li>
+    </ul>
+    <div class="btn-group">
+        <button ng-click="vm.addItem()" class="btn btn-default field-collection-add-button">
+            <i class="glyphicon glyphicon-plus"></i>
+            {{ 'ui.form.field.collection.add_button' | translate }}
+        </button>
+    </div>
+</ui-field-row>

@@ -1,0 +1,9 @@
+<ui-field-row>
+    <input type="text" class="form-control"
+           ng-model="vm.data"
+           ng-pattern="vm.pattern()"
+           ng-required="vm.required()"
+           ng-disabled="vm.disabled()"
+           ng-readonly="vm.readonly()"
+           placeholder="{{ ::vm.placeholder | translate }}" />
+</ui-field-row>

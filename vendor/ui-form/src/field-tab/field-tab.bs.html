@@ -1,0 +1,14 @@
+<ui-field-row>
+    <tabset>
+        <tab ng-repeat="$tab in vm.tabs track by $index">
+            <tab-heading>
+                <span ng-class="{ 'text-danger': vm.hasAnyError() }">{{ $tab[vm.labelProperty] | translate }}</span>
+            </tab-heading>
+            <ui-fieldset class="col-sm-11" property="{{ $tab[vm.valueProperty] }}">
+                <ui-transclude-here></ui-transclude-here>
+            </ui-fieldset>
+        </tab>
+    </tabset>
+    <div ng-if="!vm.tabs.length" translate="ui.form.field.tabs.loading"></div>
+    <ui-form-loading ng-if="vm.loading"></ui-form-loading>
+</ui-field-row>

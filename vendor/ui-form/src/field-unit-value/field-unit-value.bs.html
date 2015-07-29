@@ -1,0 +1,17 @@
+<ui-field-row>
+    <div class="input-group">
+        <input type="text" class="form-control" ng-model="vm.maskedData" fcsa-number="{ preventInvalidInput: true }" />
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                {{ vm.selectedUnit.label | translate }} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="unit in ::vm.units track by $index">
+                    <a href="javascript:void(0);" ng-click="vm.selectUnit(unit)">
+                        {{ unit.label | translate }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</ui-field-row>

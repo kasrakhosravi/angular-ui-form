@@ -1,0 +1,13 @@
+<ui-field-row>
+    <div ng-switch="vm.calendar()">
+        <div ng-switch-default>
+            <datepicker ng-model="vm.data" min-date="vm.minDate()" show-weeks="true"></datepicker>
+        </div>
+
+        <div ng-switch-when="persian">
+            <persian-datepicker ng-model="vm.data" min-date="vm.minDate()" show-weeks="true" starting-day="6"></persian-datepicker>
+        </div>
+
+        <!-- TODO: Add more calendars here -->
+    </div>
+</ui-field-row>

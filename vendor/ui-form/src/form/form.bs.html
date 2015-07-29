@@ -1,0 +1,26 @@
+
+<form novalidate class="form-horizontal" ng-class="{ 'loading': vm.loading }" autocomplete="false">
+
+    <!-- Form errors and validation messages -->
+    <div class="alert alert-danger" role="alert"
+         ng-repeat="error in vm.errors.errors track by $index">
+        {{ error | translate }}
+    </div>
+
+    <!-- Transclude the form content here -->
+    <ui-transclude-here></ui-transclude-here>
+
+    <!-- A loading wrapper when form is in loading mode -->
+    <ui-form-loading ng-if="vm.loading"></ui-form-loading>
+
+    <!-- Debug -->
+    <hr ng-if="vm.debug()" />
+    <div class="debug-wrapper" ng-if="vm.debug()" dir="ltr">
+        <h2 class="h2">Form Data</h2>
+        <pre>{{ vm | json }}</pre>
+        <hr />
+        <h2 class="h2">Form Errors</h2>
+        <pre>{{ vm.errors | json }}</pre>
+    </div>
+
+</form>
