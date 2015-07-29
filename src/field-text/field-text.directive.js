@@ -8,7 +8,7 @@
     function uiFieldText($timeout, formUtil, formFactory) {
 
         return formFactory.create({
-            templateUrl: 'forms/field-text/field-text.html',
+            templateUrl: 'ui-form/field-text/field-text.html',
             scope: {
                 required: '&?',
                 readonly: '&?',

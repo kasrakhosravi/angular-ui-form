@@ -7,7 +7,7 @@
 
     function uiFieldset(formFactory) {
         return formFactory.createTranscludable(
-            'forms/fieldset/fieldset.html', {
+            'ui-form/fieldset/fieldset.html', {
                 scope: {
                     legend: '&?'
                 }

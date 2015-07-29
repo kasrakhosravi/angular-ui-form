@@ -29,7 +29,7 @@
 
     function uiFieldCheckbox(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-checkbox/field-checkbox.html'
+            templateUrl: 'ui-form/field-checkbox/field-checkbox.html'
         });
     }
 
@@ -45,7 +45,7 @@
     function uiFieldChoice(formFactory, formUtil, formApi) {
         return formFactory.create({
             link: FieldChoiceLink,
-            templateUrl: 'forms/field-choice/field-choice.html',
+            templateUrl: 'ui-form/field-choice/field-choice.html',
             scope: {
                 inlineOptions: '&?',
                 remoteUrl: '@?',
@@ -199,7 +199,7 @@
     function uiFieldCollection(formFactory, formUtil) {
 
         return formFactory.createTranscludable(
-            'forms/field-collection/field-collection.html', FieldCollectionPostLink, {
+            'ui-form/field-collection/field-collection.html', FieldCollectionPostLink, {
                 scope: {
                     initialValue: '&?'
                 }
@@ -274,7 +274,7 @@
 
     function uiFieldColor(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-color/field-color.html'
+            templateUrl: 'ui-form/field-color/field-color.html'
         });
     }
 
@@ -289,7 +289,7 @@
 
     function uiFieldDatepicker(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-datepicker/field-datepicker.html',
+            templateUrl: 'ui-form/field-datepicker/field-datepicker.html',
             scope: {
                 minDate: '&?',
                 calendar: '&?'
@@ -308,7 +308,7 @@
 
     function uiFieldEditor(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-editor/field-editor.html'
+            templateUrl: 'ui-form/field-editor/field-editor.html'
         });
     }
 
@@ -323,7 +323,7 @@
 
     function uiFieldEmail(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-email/field-email.html'
+            templateUrl: 'ui-form/field-email/field-email.html'
         });
     }
 
@@ -336,60 +336,61 @@
         .module('ui.form')
         .directive('uiFieldImage', uiFieldImage);
 
-    function uiFieldImage(
-        formFactory
-    ) {
+    function uiFieldImage(formFactory) {
+
         return formFactory.create({
-            templateUrl: 'forms/field-image/field-image.html',
+            templateUrl: 'ui-form/field-image/field-image.html',
             scope: {
                 multiple: '&?',
                 browseButton: '&?'
             },
-            link: function ($scope) {
-                var vm = $scope.vm;
+            link: uiFieldImageLink
+        });
 
-                // Initial scope variables
-                if (vm.multiple()) {
-                    if (!angular.isArray(vm.data)) {
-                        vm.data = [];
-                    }
-                }
+        function uiFieldImageLink($scope) {
+            var vm = $scope.vm;
 
-                // Method bindings
-                vm.addImage = addImage;
-                vm.removeImage = removeImage;
-
-                // I handle upload events for the images (ie, the response from the server).
-                $scope.$on('imageUploaded', handleImageUploaded);
-
-                // I delete an image from the collection.
-                function removeImage(image) {
-                    if (vm.multiple()) {
-                        return vm.data.splice(vm.data.indexOf(image), 1);
-                    } else {
-                        vm.data = null;
-                    }
-                }
-
-                // I add an image to the collection.
-                function addImage(image) {
-                    if (vm.multiple()) {
-                        if (typeof vm.data === 'undefined' || null === vm.data) {
-                            vm.data = [];
-                        }
-
-                        return vm.data.push(image);
-                    } else {
-                        vm.data = image;
-                    }
-                }
-
-                // I handle upload events for the images (ie, the response from the server).
-                function handleImageUploaded(event, image) {
-                    addImage(image);
+            // Initial scope variables
+            if (vm.multiple()) {
+                if (!angular.isArray(vm.data)) {
+                    vm.data = [];
                 }
             }
-        });
+
+            // Method bindings
+            vm.addImage = addImage;
+            vm.removeImage = removeImage;
+
+            // I handle upload events for the images (ie, the response from the server).
+            $scope.$on('imageUploaded', handleImageUploaded);
+
+            // I delete an image from the collection.
+            function removeImage(image) {
+                if (vm.multiple()) {
+                    return vm.data.splice(vm.data.indexOf(image), 1);
+                } else {
+                    vm.data = null;
+                }
+            }
+
+            // I add an image to the collection.
+            function addImage(image) {
+                if (vm.multiple()) {
+                    if (typeof vm.data === 'undefined' || null === vm.data) {
+                        vm.data = [];
+                    }
+
+                    return vm.data.push(image);
+                } else {
+                    vm.data = image;
+                }
+            }
+
+            // I handle upload events for the images (ie, the response from the server).
+            function handleImageUploaded(event, image) {
+                addImage(image);
+            }
+        }
     }
 
 })(angular);
@@ -404,7 +405,7 @@
     function translationsConfig($translateProvider) {
         $translateProvider.translations('fa_IR', {
             'ui.form.field.image.instructions': 'برای آپلود کافیه فایل رو بندازی اینجا',
-            'ui.form.field.image.upload': 'آپلود فایل جدید'
+            'ui.form.field.image.upload_button': 'آپلود فایل جدید'
         });
     }
 
@@ -785,7 +786,7 @@
 
     function uiFieldNumber(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-number/field-number.html',
+            templateUrl: 'ui-form/field-number/field-number.html',
             scope: {
                 append: '&?',
                 prepend: '&?'
@@ -805,7 +806,7 @@
 
     function uiFieldPassword(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-password/field-password.html',
+            templateUrl: 'ui-form/field-password/field-password.html',
             scope: {
                 confirmLabel: '@'
             },
@@ -840,7 +841,7 @@
     function uiFieldRow() {
         return {
             restrict: 'E',
-            templateUrl: 'forms/field-row/field-row.html',
+            templateUrl: 'ui-form/field-row/field-row.html',
             transclude: true
         };
     }
@@ -857,7 +858,7 @@
     function uiFieldTab(formFactory, formApi, formUtil) {
 
         return formFactory.createTranscludable(
-            'forms/field-tab/field-tab.html', FieldTabPostLink, {
+            'ui-form/field-tab/field-tab.html', FieldTabPostLink, {
                 scope: {
                     inlineTabs: '&?',
                     remoteParams: '&?',
@@ -973,7 +974,7 @@
     function uiFieldText($timeout, formUtil, formFactory) {
 
         return formFactory.create({
-            templateUrl: 'forms/field-text/field-text.html',
+            templateUrl: 'ui-form/field-text/field-text.html',
             scope: {
                 required: '&?',
                 readonly: '&?',
@@ -1003,7 +1004,7 @@
 
     function uiFieldTextarea($timeout, formUtil, formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-textarea/field-textarea.html',
+            templateUrl: 'ui-form/field-textarea/field-textarea.html',
             scope: {
                 placeholder: '@?',
                 required: '&?',
@@ -1032,7 +1033,7 @@
     function uiFieldTree($q, formFactory, formUtil, formApi) {
 
         return formFactory.create({
-            templateUrl: 'forms/field-tree/field-tree.html',
+            templateUrl: 'ui-form/field-tree/field-tree.html',
             link: FieldTreeLink,
             scope: {
                 data: '=?ngModel',
@@ -1229,7 +1230,7 @@
     function uiFieldUnitValue(formFactory, localStorageService) {
 
         return formFactory.create({
-            templateUrl: 'forms/field-unit-value/field-unit-value.html',
+            templateUrl: 'ui-form/field-unit-value/field-unit-value.html',
             scope: {
                 units: '=',
                 alias: '@'
@@ -1338,7 +1339,7 @@
 
     function uiFieldset(formFactory) {
         return formFactory.createTranscludable(
-            'forms/fieldset/fieldset.html', {
+            'ui-form/fieldset/fieldset.html', {
                 scope: {
                     legend: '&?'
                 }
@@ -2193,7 +2194,7 @@
         .directive('uiForm', uiForm);
 
     function uiForm(formFactory) {
-        return formFactory.createTranscludable('forms/form/form.html');
+        return formFactory.createTranscludable('ui-form/form/form.html');
     }
 
 })(angular);
@@ -2208,7 +2209,7 @@
     function uiFormLoading() {
         return {
             restrict: 'AE',
-            templateUrl: 'forms/loading/loading.html'
+            templateUrl: 'ui-form/loading/loading.html'
         };
     }
 

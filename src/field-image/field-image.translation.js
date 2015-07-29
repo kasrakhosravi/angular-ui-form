@@ -8,7 +8,7 @@
     function translationsConfig($translateProvider) {
         $translateProvider.translations('fa_IR', {
             'ui.form.field.image.instructions': 'برای آپلود کافیه فایل رو بندازی اینجا',
-            'ui.form.field.image.upload': 'آپلود فایل جدید'
+            'ui.form.field.image.upload_button': 'آپلود فایل جدید'
         });
     }
 

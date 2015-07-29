@@ -7,7 +7,7 @@
 
     function uiFieldNumber(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-number/field-number.html',
+            templateUrl: 'ui-form/field-number/field-number.html',
             scope: {
                 append: '&?',
                 prepend: '&?'

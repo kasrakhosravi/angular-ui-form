@@ -8,7 +8,7 @@
     function uiFieldUnitValue(formFactory, localStorageService) {
 
         return formFactory.create({
-            templateUrl: 'forms/field-unit-value/field-unit-value.html',
+            templateUrl: 'ui-form/field-unit-value/field-unit-value.html',
             scope: {
                 units: '=',
                 alias: '@'

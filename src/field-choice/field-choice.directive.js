@@ -8,7 +8,7 @@
     function uiFieldChoice(formFactory, formUtil, formApi) {
         return formFactory.create({
             link: FieldChoiceLink,
-            templateUrl: 'forms/field-choice/field-choice.html',
+            templateUrl: 'ui-form/field-choice/field-choice.html',
             scope: {
                 inlineOptions: '&?',
                 remoteUrl: '@?',

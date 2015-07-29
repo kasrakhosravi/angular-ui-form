@@ -8,7 +8,7 @@
     function uiFieldTab(formFactory, formApi, formUtil) {
 
         return formFactory.createTranscludable(
-            'forms/field-tab/field-tab.html', FieldTabPostLink, {
+            'ui-form/field-tab/field-tab.html', FieldTabPostLink, {
                 scope: {
                     inlineTabs: '&?',
                     remoteParams: '&?',

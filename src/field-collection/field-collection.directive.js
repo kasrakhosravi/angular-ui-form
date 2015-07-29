@@ -8,7 +8,7 @@
     function uiFieldCollection(formFactory, formUtil) {
 
         return formFactory.createTranscludable(
-            'forms/field-collection/field-collection.html', FieldCollectionPostLink, {
+            'ui-form/field-collection/field-collection.html', FieldCollectionPostLink, {
                 scope: {
                     initialValue: '&?'
                 }

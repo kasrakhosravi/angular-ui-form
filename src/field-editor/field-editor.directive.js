@@ -7,7 +7,7 @@
 
     function uiFieldEditor(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-editor/field-editor.html'
+            templateUrl: 'ui-form/field-editor/field-editor.html'
         });
     }
 

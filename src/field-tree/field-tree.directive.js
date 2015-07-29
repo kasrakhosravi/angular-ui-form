@@ -8,7 +8,7 @@
     function uiFieldTree($q, formFactory, formUtil, formApi) {
 
         return formFactory.create({
-            templateUrl: 'forms/field-tree/field-tree.html',
+            templateUrl: 'ui-form/field-tree/field-tree.html',
             link: FieldTreeLink,
             scope: {
                 data: '=?ngModel',

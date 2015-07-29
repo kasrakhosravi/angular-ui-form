@@ -7,7 +7,7 @@
 
     function uiFieldPassword(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-password/field-password.html',
+            templateUrl: 'ui-form/field-password/field-password.html',
             scope: {
                 confirmLabel: '@'
             },

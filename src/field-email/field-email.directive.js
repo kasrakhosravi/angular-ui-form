@@ -7,7 +7,7 @@
 
     function uiFieldEmail(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-email/field-email.html'
+            templateUrl: 'ui-form/field-email/field-email.html'
         });
     }
 

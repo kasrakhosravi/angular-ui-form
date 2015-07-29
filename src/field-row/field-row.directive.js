@@ -8,7 +8,7 @@
     function uiFieldRow() {
         return {
             restrict: 'E',
-            templateUrl: 'forms/field-row/field-row.html',
+            templateUrl: 'ui-form/field-row/field-row.html',
             transclude: true
         };
     }

@@ -7,7 +7,7 @@
 
     function uiFieldTextarea($timeout, formUtil, formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-textarea/field-textarea.html',
+            templateUrl: 'ui-form/field-textarea/field-textarea.html',
             scope: {
                 placeholder: '@?',
                 required: '&?',

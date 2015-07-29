@@ -6,7 +6,7 @@
         .directive('uiForm', uiForm);
 
     function uiForm(formFactory) {
-        return formFactory.createTranscludable('forms/form/form.html');
+        return formFactory.createTranscludable('ui-form/form/form.html');
     }
 
 })(angular);

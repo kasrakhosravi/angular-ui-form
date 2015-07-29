@@ -180,7 +180,7 @@ module.exports = function ( grunt ) {
                 options: {
                     module: 'ui.form',
                     url: function(url) {
-                        return url.replace('src/', 'forms/').replace('.md.html', '.html');
+                        return url.replace('src/', 'ui-form/').replace('.md.html', '.html');
                     }
                 },
                 src: '<%= app.templates.material %>',
@@ -194,7 +194,7 @@ module.exports = function ( grunt ) {
                 options: {
                     module: 'ui.form',
                     url: function(url) {
-                        return url.replace('src/', 'forms/').replace('.bs.html', '.html');
+                        return url.replace('src/', 'ui-form/').replace('.bs.html', '.html');
                     }
                 },
                 src: '<%= app.templates.bootstrap %>',

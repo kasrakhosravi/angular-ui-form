@@ -8,7 +8,7 @@
     function uiFormLoading() {
         return {
             restrict: 'AE',
-            templateUrl: 'forms/loading/loading.html'
+            templateUrl: 'ui-form/loading/loading.html'
         };
     }
 

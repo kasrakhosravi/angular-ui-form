@@ -7,7 +7,7 @@
 
     function uiFieldCheckbox(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-checkbox/field-checkbox.html'
+            templateUrl: 'ui-form/field-checkbox/field-checkbox.html'
         });
     }
 

@@ -1,7 +1,7 @@
 angular.module('ui.form').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('forms/field-checkbox/field-checkbox.html',
+  $templateCache.put('ui-form/field-checkbox/field-checkbox.html',
     "<div class=\"form-group\" ng-class=\"{ 'has-error': vm.errors.errors.length }\">\n" +
     "    <div class=\"col-sm-offset-2 col-sm-10\">\n" +
     "        <div class=\"checkbox\">\n" +
@@ -17,7 +17,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-choice/field-choice.html',
+  $templateCache.put('ui-form/field-choice/field-choice.html',
     "<ui-field-row>\n" +
     "\n" +
     "    <!-- Single value select without expanding -->\n" +
@@ -57,7 +57,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-collection/field-collection.html',
+  $templateCache.put('ui-form/field-collection/field-collection.html',
     "<ui-field-row>\n" +
     "    <ul class=\"field-set\">\n" +
     "        <li ng-repeat=\"$item in vm.data track by $index\" class=\"row\">\n" +
@@ -77,14 +77,14 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-color/field-color.html',
+  $templateCache.put('ui-form/field-color/field-color.html',
     "<ui-field-row>\n" +
     "    <input type=\"email\" class=\"form-control\" ng-model=\"vm.data\" />\n" +
     "</ui-field-row>"
   );
 
 
-  $templateCache.put('forms/field-datepicker/field-datepicker.html',
+  $templateCache.put('ui-form/field-datepicker/field-datepicker.html',
     "<ui-field-row>\n" +
     "    <div ng-switch=\"vm.calendar()\">\n" +
     "        <div ng-switch-default>\n" +
@@ -101,21 +101,21 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-editor/field-editor.html',
+  $templateCache.put('ui-form/field-editor/field-editor.html',
     "<ui-field-row>\n" +
     "    <text-angular ng-model=\"vm.data\"></text-angular>\n" +
     "</ui-field-row>"
   );
 
 
-  $templateCache.put('forms/field-email/field-email.html',
+  $templateCache.put('ui-form/field-email/field-email.html',
     "<ui-field-row>\n" +
     "    <input type=\"email\" class=\"form-control\" ng-model=\"vm.data\" />\n" +
     "</ui-field-row>"
   );
 
 
-  $templateCache.put('forms/field-image/field-image.html',
+  $templateCache.put('ui-form/field-image/field-image.html',
     "<ui-field-row>\n" +
     "    <div ui-field-image-uploader>\n" +
     "\n" +
@@ -170,7 +170,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-number/field-number.html',
+  $templateCache.put('ui-form/field-number/field-number.html',
     "<ui-field-row>\n" +
     "    <div class=\"input-group\">\n" +
     "        <span class=\"input-group-addon\" ng-if=\"vm.append()\">{{ vm.append() }}</span>\n" +
@@ -181,7 +181,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-password/field-password.html',
+  $templateCache.put('ui-form/field-password/field-password.html',
     "<ui-field-row>\n" +
     "    <div class=\"col-sm-6\">\n" +
     "        <input type=\"password\" class=\"form-control\" ng-model=\"vm.data\" />\n" +
@@ -193,7 +193,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-row/field-row.html',
+  $templateCache.put('ui-form/field-row/field-row.html',
     "<div class=\"form-group\" ng-class=\"{ 'has-error': vm.errors.errors.length }\">\n" +
     "    <label ng-if=\"vm.label\" class=\"col-sm-2 control-label\">{{ ::vm.label | translate }}</label>\n" +
     "    <div ng-class=\"{ 'col-sm-10' : vm.label, 'col-sm-12' : !vm.label }\">\n" +
@@ -207,7 +207,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-tab/field-tab.html',
+  $templateCache.put('ui-form/field-tab/field-tab.html',
     "<ui-field-row>\n" +
     "    <tabset>\n" +
     "        <tab ng-repeat=\"$tab in vm.tabs track by $index\">\n" +
@@ -225,7 +225,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-text/field-text.html',
+  $templateCache.put('ui-form/field-text/field-text.html',
     "<ui-field-row>\n" +
     "    <input type=\"text\" class=\"form-control\"\n" +
     "           ng-model=\"vm.data\"\n" +
@@ -238,7 +238,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-textarea/field-textarea.html',
+  $templateCache.put('ui-form/field-textarea/field-textarea.html',
     "<ui-field-row>\n" +
     "    <textarea class=\"form-control\"\n" +
     "              ng-model=\"vm.data\"\n" +
@@ -249,7 +249,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-tree/field-tree-node.html',
+  $templateCache.put('ui-form/field-tree/field-tree-node.html',
     "<i class=\"tree-node-icon\"\n" +
     "   ng-click=\"node.children.length > 0 && toggle(this)\">\n" +
     "</i>\n" +
@@ -263,7 +263,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
     "    <li class=\"tree-node\"\n" +
     "        ui-tree-node=\"\"\n" +
     "        ng-repeat=\"node in node.children\"\n" +
-    "        ng-include=\"'forms/field-tree/field-tree-node.html'\"\n" +
+    "        ng-include=\"'ui-form/field-tree/field-tree-node.html'\"\n" +
     "        ng-class=\"{\n" +
     "            'tree-node-leaf': !node.children || !node.children.length,\n" +
     "            'tree-node-last': $last,\n" +
@@ -275,7 +275,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-tree/field-tree.html',
+  $templateCache.put('ui-form/field-tree/field-tree.html',
     "<ui-field-row>\n" +
     "    <!-- Angular UI Tree -->\n" +
     "    <div ui-tree=\"\" callbacks=\"vm.callbacks\" data-drag-delay=\"500\" data-drag-enabled=\"false\">\n" +
@@ -283,7 +283,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
     "            <li class=\"tree-node\"\n" +
     "                ui-tree-node=\"\"\n" +
     "                ng-repeat=\"node in vm.nodes\"\n" +
-    "                ng-include=\"'forms/field-tree/field-tree-node.html'\"\n" +
+    "                ng-include=\"'ui-form/field-tree/field-tree-node.html'\"\n" +
     "                ng-class=\"{\n" +
     "                    'tree-node-leaf': !node.children || !node.children.length,\n" +
     "                    'tree-node-last': $last,\n" +
@@ -300,7 +300,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/field-unit-value/field-unit-value.html',
+  $templateCache.put('ui-form/field-unit-value/field-unit-value.html',
     "<ui-field-row>\n" +
     "    <div class=\"input-group\">\n" +
     "        <input type=\"text\" class=\"form-control\" ng-model=\"vm.maskedData\" fcsa-number=\"{ preventInvalidInput: true }\" />\n" +
@@ -321,7 +321,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/fieldset/fieldset.html',
+  $templateCache.put('ui-form/fieldset/fieldset.html',
     "<div class=\"form-fieldset\">\n" +
     "    <div class=\"fieldset-legend col-sm-2\" ng-class=\"{ 'hidden': !vm.legend() }\">\n" +
     "        <span class=\"h3\">{{ vm.legend().title | translate }}</span>\n" +
@@ -334,7 +334,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/form/form.html',
+  $templateCache.put('ui-form/form/form.html',
     "\n" +
     "<form novalidate class=\"form-horizontal\" ng-class=\"{ 'loading': vm.loading }\" autocomplete=\"false\">\n" +
     "\n" +
@@ -364,7 +364,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('forms/loading/loading.html',
+  $templateCache.put('ui-form/loading/loading.html',
     "<svg version=\"1.1\"\n" +
     "\tclass=\"svg-loader\"\n" +
     "\txmlns=\"http://www.w3.org/2000/svg\"\n" +

@@ -7,7 +7,7 @@
 
     function uiFieldColor(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-color/field-color.html'
+            templateUrl: 'ui-form/field-color/field-color.html'
         });
     }
 

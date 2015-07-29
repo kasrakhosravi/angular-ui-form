@@ -7,7 +7,7 @@
 
     function uiFieldDatepicker(formFactory) {
         return formFactory.create({
-            templateUrl: 'forms/field-datepicker/field-datepicker.html',
+            templateUrl: 'ui-form/field-datepicker/field-datepicker.html',
             scope: {
                 minDate: '&?',
                 calendar: '&?'
