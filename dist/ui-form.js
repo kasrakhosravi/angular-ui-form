@@ -212,13 +212,6 @@
             // Bindings
             vm.addItem = addItem;
             vm.removeItem = removeItem;
-            vm.toolbar = {
-                add: {
-                    label: 'ui.form.collection.add',
-                    color: 'primary',
-                    click: addItem
-                }
-            };
 
             // Default Variables
             setDefaults();
@@ -349,7 +342,8 @@
         return formFactory.create({
             templateUrl: 'forms/field-image/field-image.html',
             scope: {
-                multiple: '&?'
+                multiple: '&?',
+                browseButton: '&?'
             },
             link: function ($scope) {
                 var vm = $scope.vm;

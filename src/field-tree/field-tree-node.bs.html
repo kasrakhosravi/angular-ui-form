@@ -3,8 +3,8 @@
 </i>
 <div class="tree-node-anchor"
    ng-click="vm.toggleNode(node)">
-    <i ng-if="vm.selectedNodes.indexOf(node) > -1" class="text-info fa fa-check"></i>
-    <i ng-if="node.children.length > 0" class="text-muted fa fa-folder"></i>
+    <i ng-if="vm.selectedNodes.indexOf(node) > -1" class="text-info glyphicon glyphicon-ok"></i>
+    <i ng-if="node.children.length > 0" class="text-muted glyphicon glyphicon-folder-open"></i>
     {{ node[vm.labelProperty] }}
 </div>
 <ol ui-tree-nodes="" ng-model="node.children" ng-class="{ 'hidden': collapsed }">

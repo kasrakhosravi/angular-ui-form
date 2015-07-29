@@ -11,7 +11,8 @@
         return formFactory.create({
             templateUrl: 'forms/field-image/field-image.html',
             scope: {
-                multiple: '&?'
+                multiple: '&?',
+                browseButton: '&?'
             },
             link: function ($scope) {
                 var vm = $scope.vm;

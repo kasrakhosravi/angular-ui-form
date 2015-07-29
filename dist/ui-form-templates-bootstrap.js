@@ -67,7 +67,12 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
     "            <a class=\"col-sm-1 btn icon icon-close pull-right flip\" ng-click=\"vm.removeItem($index)\"></a>\n" +
     "        </li>\n" +
     "    </ul>\n" +
-    "    <ui-toolbar buttons=\"vm.toolbar\"></ui-toolbar>\n" +
+    "    <div class=\"btn-group\">\n" +
+    "        <button ng-click=\"vm.addItem()\" class=\"btn btn-default field-collection-add-button\">\n" +
+    "            <i class=\"glyphicon glyphicon-plus\"></i>\n" +
+    "            {{ 'ui.form.field.collection.add_button' | translate }}\n" +
+    "        </button>\n" +
+    "    </div>\n" +
     "</ui-field-row>"
   );
 
@@ -139,7 +144,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
     "                    <a ng-click=\"cancelUpload(item)\" class=\"delete\">&times;</a>\n" +
     "                    <ui-field-image-preview image=\"item.file\"></ui-field-image-preview>\n" +
     "                    <progressbar ng-if=\"item.file.status === plupload.UPLOADING\" max=\"100\" value=\"item.percent\" type=\"info\">{{ item.percent }}%</progressbar>\n" +
-    "                    <button ng-if=\"item.file.status === plupload.FAILED\" class=\"btn btn-danger retry\" ng-click=\"retryUpload(item)\"><i class=\"fa fa-refresh\"></i></button>\n" +
+    "                    <button ng-if=\"item.file.status === plupload.FAILED\" class=\"btn btn-danger retry\" ng-click=\"retryUpload(item)\"><i class=\"glyphicon glyphicon-refresh\"></i></button>\n" +
     "                </div>\n" +
     "            </li>\n" +
     "\n" +
@@ -152,10 +157,13 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
     "        <!-- Buttons of our image field -->\n" +
     "        <div class=\"btn-group\">\n" +
     "            <button class=\"btn btn-default field-image-upload-button\">\n" +
-    "                <i class=\"fa fa-upload\"></i>\n" +
-    "                {{ 'ui.form.field.image.upload' | translate }}\n" +
+    "                <i class=\"glyphicon glyphicon-upload\"></i>\n" +
+    "                {{ 'ui.form.field.image.upload_button' | translate }}\n" +
     "            </button>\n" +
-    "            <ui-browse callback=\"vm.addImage\"></ui-browse>\n" +
+    "            <button ng-if=\"vm.browseButton()\" ng-click=\"vm.browseButton()(vm, $scope)\" class=\"btn btn-default field-image-browser-button\">\n" +
+    "                <i class=\"glyphicon glyphicon-folder-open\"></i>\n" +
+    "                {{ 'ui.form.field.image.browse_button' | translate }}\n" +
+    "            </button>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</ui-field-row>"
@@ -247,8 +255,8 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
     "</i>\n" +
     "<div class=\"tree-node-anchor\"\n" +
     "   ng-click=\"vm.toggleNode(node)\">\n" +
-    "    <i ng-if=\"vm.selectedNodes.indexOf(node) > -1\" class=\"text-info fa fa-check\"></i>\n" +
-    "    <i ng-if=\"node.children.length > 0\" class=\"text-muted fa fa-folder\"></i>\n" +
+    "    <i ng-if=\"vm.selectedNodes.indexOf(node) > -1\" class=\"text-info glyphicon glyphicon-ok\"></i>\n" +
+    "    <i ng-if=\"node.children.length > 0\" class=\"text-muted glyphicon glyphicon-folder-open\"></i>\n" +
     "    {{ node[vm.labelProperty] }}\n" +
     "</div>\n" +
     "<ol ui-tree-nodes=\"\" ng-model=\"node.children\" ng-class=\"{ 'hidden': collapsed }\">\n" +

@@ -21,13 +21,6 @@
             // Bindings
             vm.addItem = addItem;
             vm.removeItem = removeItem;
-            vm.toolbar = {
-                add: {
-                    label: 'ui.form.collection.add',
-                    color: 'primary',
-                    click: addItem
-                }
-            };
 
             // Default Variables
             setDefaults();
