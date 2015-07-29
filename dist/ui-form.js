@@ -50,6 +50,7 @@
                 inlineOptions: '&?',
                 remoteUrl: '@?',
                 remoteParams: '&?',
+                optionsRoot: '@?',
                 valueProperty: '@?',
                 labelProperty: '@?',
                 selected: '=?',
@@ -90,7 +91,15 @@
                 }
 
                 if (typeof vm.inlineOptions === 'function') {
-                    vm.options = normalizeOptions(vm.inlineOptions());
+                    var options;
+
+                    if (vm.optionsRoot) {
+                        options = formUtil.deepGet(vm.inlineOptions(), vm.optionsRoot);
+                    } else {
+                        options = vm.inlineOptions();
+                    }
+
+                    vm.options = normalizeOptions(options);
                 }
 
                 if (typeof vm.options === 'undefined') {
@@ -115,6 +124,11 @@
                 vm.loading = true;
                 formApi.get(vm.remoteUrl, vm.remoteParams()).then(function (options) {
                     vm.loading = false;
+
+                    if (vm.optionsRoot) {
+                        options = formUtil.deepGet(options, vm.optionsRoot);
+                    }
+
                     vm.options = formUtil.objectValues(normalizeOptions(options)) || [];
 
                     if (typeof vm.data === 'undefined' && vm.options.length > 0) {
@@ -527,7 +541,7 @@
                     prevent_duplicates: true,
                     mime_types: [
                         {
-                            title: $translate.instant('ui.common.form.field.image.image_mime'),
+                            title: $translate.instant('ui.form.field.image.image_mime'),
                             extensions: 'jpg,gif,png,jpeg'
                         }
                     ]
@@ -811,7 +825,7 @@
 
                 function checkValues() {
                     if (vm.confirmValue !== vm.data) {
-                        vm.raiseError('ui.common.field.password.mismatch');
+                        vm.raiseError('ui.field.password.mismatch');
                     } else {
                         vm.resetErrors();
                     }
@@ -854,6 +868,7 @@
                     inlineTabs: '&?',
                     remoteParams: '&?',
                     remoteUrl: '@',
+                    tabsRoot: '@?',
                     valueProperty: '@',
                     labelProperty: '@'
                 }
@@ -889,7 +904,15 @@
                 }
 
                 if (typeof vm.inlineTabs === 'function') {
-                    vm.tabs = normalizeTabs(vm.inlineTabs());
+                    var tabs;
+
+                    if (vm.tabsRoot) {
+                        tabs = formUtil.deepGet(vm.inlineTabs(), vm.tabsRoot);
+                    } else {
+                        tabs = vm.inlineTabs();
+                    }
+
+                    vm.tabs = normalizeTabs(tabs);
                 }
 
                 if (typeof vm.tabs === 'undefined') {
@@ -908,13 +931,18 @@
                 vm.loading = true;
                 formApi.get(vm.remoteUrl, vm.remoteParams()).then(function (tabs) {
                     vm.loading = false;
+
+                    if (vm.tabsRoot) {
+                        tabs = formUtil.deepGet(tabs, vm.tabsRoot);
+                    }
+
                     vm.tabs = formUtil.objectValues(tabs) || [];
                 });
             }
 
             /**
              * Normalizes key-value pairs into an array
-             * with desired structure for choice field.
+             * with desired structure for field-tab.
              *
              * @return {Array}
              */

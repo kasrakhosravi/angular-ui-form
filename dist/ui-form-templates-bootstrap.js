@@ -211,7 +211,7 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
     "            </ui-fieldset>\n" +
     "        </tab>\n" +
     "    </tabset>\n" +
-    "    <div ng-if=\"!vm.tabs.length\" translate=\"ui.common.form.field.tabs.loading\"></div>\n" +
+    "    <div ng-if=\"!vm.tabs.length\" translate=\"ui.form.field.tabs.loading\"></div>\n" +
     "    <ui-form-loading ng-if=\"vm.loading\"></ui-form-loading>\n" +
     "</ui-field-row>"
   );

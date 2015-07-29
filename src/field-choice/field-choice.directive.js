@@ -13,6 +13,7 @@
                 inlineOptions: '&?',
                 remoteUrl: '@?',
                 remoteParams: '&?',
+                optionsRoot: '@?',
                 valueProperty: '@?',
                 labelProperty: '@?',
                 selected: '=?',
@@ -53,7 +54,15 @@
                 }
 
                 if (typeof vm.inlineOptions === 'function') {
-                    vm.options = normalizeOptions(vm.inlineOptions());
+                    var options;
+
+                    if (vm.optionsRoot) {
+                        options = formUtil.deepGet(vm.inlineOptions(), vm.optionsRoot);
+                    } else {
+                        options = vm.inlineOptions();
+                    }
+
+                    vm.options = normalizeOptions(options);
                 }
 
                 if (typeof vm.options === 'undefined') {
@@ -78,6 +87,11 @@
                 vm.loading = true;
                 formApi.get(vm.remoteUrl, vm.remoteParams()).then(function (options) {
                     vm.loading = false;
+
+                    if (vm.optionsRoot) {
+                        options = formUtil.deepGet(options, vm.optionsRoot);
+                    }
+
                     vm.options = formUtil.objectValues(normalizeOptions(options)) || [];
 
                     if (typeof vm.data === 'undefined' && vm.options.length > 0) {

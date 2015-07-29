@@ -13,6 +13,7 @@
                     inlineTabs: '&?',
                     remoteParams: '&?',
                     remoteUrl: '@',
+                    tabsRoot: '@?',
                     valueProperty: '@',
                     labelProperty: '@'
                 }
@@ -48,7 +49,15 @@
                 }
 
                 if (typeof vm.inlineTabs === 'function') {
-                    vm.tabs = normalizeTabs(vm.inlineTabs());
+                    var tabs;
+
+                    if (vm.tabsRoot) {
+                        tabs = formUtil.deepGet(vm.inlineTabs(), vm.tabsRoot);
+                    } else {
+                        tabs = vm.inlineTabs();
+                    }
+
+                    vm.tabs = normalizeTabs(tabs);
                 }
 
                 if (typeof vm.tabs === 'undefined') {
@@ -67,13 +76,18 @@
                 vm.loading = true;
                 formApi.get(vm.remoteUrl, vm.remoteParams()).then(function (tabs) {
                     vm.loading = false;
+
+                    if (vm.tabsRoot) {
+                        tabs = formUtil.deepGet(tabs, vm.tabsRoot);
+                    }
+
                     vm.tabs = formUtil.objectValues(tabs) || [];
                 });
             }
 
             /**
              * Normalizes key-value pairs into an array
-             * with desired structure for choice field.
+             * with desired structure for field-tab.
              *
              * @return {Array}
              */
