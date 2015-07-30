@@ -2,22 +2,11 @@
     'use strict';
 
     angular
-        .module('ui.form.examples', [
-            'ui.form'
-        ])
-        .config(FormExampleConfig)
-        .controller('FormSimpleExampleController', FormSimpleExampleController)
+        .module('ui.form.docs')
+        .controller('ExampleSimpleFormController', ExampleSimpleFormController)
     ;
 
-    // -- Config -- //
-
-    function FormExampleConfig($translateProvider) {
-        $translateProvider.preferredLanguage('en_US');
-    }
-
-    // -- Controllers -- //
-
-    function FormSimpleExampleController($timeout) {
+    function ExampleSimpleFormController($timeout) {
         var vm = this;
 
         // Default bindings

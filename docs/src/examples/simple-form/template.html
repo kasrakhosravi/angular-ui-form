@@ -1,0 +1,32 @@
+<h2>A very simple form</h2>
+<div class="row">
+    <div class="col-sm-7">
+        <ui-form ng-model="vm.data" debug="vm.debug" errors="vm.errors" loading="vm.loading">
+            <ui-field-text property="title"
+                           required="true"
+                           label="Title"
+                           placeholder="My perfect application"
+                           help="This is a help message"></ui-field-text>
+            <ui-field-text property="email"
+                           required="true"
+                           label="Email"
+                           placeholder="email@example.com"
+                           help="This field only allows an email address using pattern attribute."
+                           pattern=" '^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$' "></ui-field-text>
+            <ui-field-text property="sku"
+                           readonly="true"
+                           label="SKU"
+                           help="This field is read-only"></ui-field-text>
+            <ui-field-textarea property="content"
+                               label="Content"
+                               help="And this is another help message"></ui-field-textarea>
+        </ui-form>
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" ng-click="vm.save()">Save</button>
+            <button class="btn btn-default" ng-click="vm.saveWithErrors()">Save, but errors</button>
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <pre>{{ vm.data | json }}</pre>
+    </div>
+</div>

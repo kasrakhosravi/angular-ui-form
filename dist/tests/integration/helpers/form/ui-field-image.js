@@ -1,17 +1,8 @@
 var util = require('../util');
 var DefaultHelper = require('./default');
 
-/**
- * @type {{setData: Function, getData: Function}}
- */
 module.exports = {
 
-    /**
-     * @param {FormPageObject} pageObject
-     * @param {*} data
-     *
-     * @return {Promise}
-     */
     setData: function(pageObject, data) {
         return this.clearData(pageObject).then(function () {
             return util.walkByPromise(data, function (image) {
@@ -28,11 +19,6 @@ module.exports = {
         });
     },
 
-    /**
-     * @param {FormPageObject} pageObject
-     *
-     * @return {Promise}
-     */
     getData: function(pageObject) {
         return pageObject.getElement()
             .all(by.repeater('image in vm.data track by $index'))
@@ -41,11 +27,6 @@ module.exports = {
             });
     },
 
-    /**
-     * @param {FormPageObject} pageObject
-     *
-     * @return {Promise}
-     */
     clearData: function(pageObject) {
         var buttons = pageObject.getElement().$$('[ng-click="vm.removeImage(image)"]');
 

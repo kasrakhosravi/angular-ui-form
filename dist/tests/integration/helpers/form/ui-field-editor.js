@@ -2,19 +2,8 @@ var _ = require('lodash');
 var util = require('../util');
 var DefaultHelper = require('./default');
 
-/**
- * This is the default form data-helper which is used for most of our fields.
- *
- * @type {{setData: Function, getData: Function}}
- */
 module.exports = {
 
-    /**
-     * @param {FormPageObject} pageObject
-     * @param {*} data
-     *
-     * @return {Promise}
-     */
     setData: function(pageObject, data) {
         var element = pageObject.getElement().element(by.css('[contenteditable]')),
             result;
@@ -29,11 +18,6 @@ module.exports = {
         return result;
     },
 
-    /**
-     * @param {FormPageObject} pageObject
-     *
-     * @return {Promise}
-     */
     getData: function(pageObject) {
         return pageObject.getElement().element(by.model('vm.data')).element(by.css('textarea[ng-model=html]'))
             .getAttribute('value')

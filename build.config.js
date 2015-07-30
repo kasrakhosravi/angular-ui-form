@@ -68,5 +68,12 @@ module.exports = {
             // Utility
             'bower_components/angular-fcsa-number/src/fcsaNumber.js'
         ]
+    },
+
+    docs: {
+        scripts: [
+            'docs/src/app.js',
+            'docs/src/**/*.js'
+        ]
     }
 };

@@ -1,2 +1,0 @@
-var DefaultHelper=require("./default");module.exports={setData:function(a,b){return protractor.promise.when(!0)},getData:function(a){return[]},getErrors:DefaultHelper.getErrors};
-//# sourceMappingURL=rv-field-collection.js.map

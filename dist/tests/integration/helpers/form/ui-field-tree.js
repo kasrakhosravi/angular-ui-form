@@ -1,26 +1,12 @@
 var DefaultHelper = require('./default');
 
-/**
- * @type {{setData: Function, getData: Function}}
- */
 module.exports = {
 
-    /**
-     * @param {FormPageObject} pageObject
-     * @param {*} data
-     *
-     * @return {Promise}
-     */
+    // TODO Implement.
     setData: function(pageObject, data) {
-        // TODO Implement.
         return protractor.promise.when(true);
     },
 
-    /**
-     * @param {FormPageObject} pageObject
-     *
-     * @return {Promise}
-     */
     getData: function(pageObject) {
         var formElement = pageObject.getElement();
 
@@ -34,8 +20,8 @@ module.exports = {
         });
     },
 
+    // TODO Implement.
     clearData: function() {
-        // TODO Implement.
         return protractor.promise.when(true);
     },
     getErrors: DefaultHelper.getErrors
