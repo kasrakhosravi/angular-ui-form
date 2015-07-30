@@ -25,20 +25,20 @@
   "dependencies": {},
   "devDependencies": {
     "lodash": "~3.10.0",
-    "angular": "~1.3.17",
     "bootstrap": "~3.3.2",
-    "plupload": "~2.1.4",
-    "angular-ui-tree": "~2.2.0",
-    "angular-local-storage": "~0.2.2",
-    "angular-bootstrap-persian-datepicker": "https://github.com/AminRahimi/angular-bootstrap-persian-datepicker.git",
+    "angular": "~1.3.17",
     "angular-mocks": "~1.3.17",
     "angular-route": "~1.3.17",
+    "angular-translate": "~2.7.2",
+    "angular-local-storage": "~0.2.2",
+    "angular-ui-tree": "~2.2.0",
     "angular-ui-router": "~0.2.15",
     "angular-material": "~0.10.0",
     "angular-bootstrap": "~0.13.1",
     "textAngular": "~1.4.2",
-    "angular-translate": "~2.7.2",
-    "angular-fcsa-number": "~1.5.3"
+    "plupload": "~2.1.4",
+    "angular-fcsa-number": "~1.5.3",
+    "angular-bootstrap-persian-datepicker": "https://github.com/AminRahimi/angular-bootstrap-persian-datepicker.git"
   },
   "resolutions": {
     "angular": "~1.3.17"

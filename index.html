@@ -6,28 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendor/angular-ui-tree/dist/angular-ui-tree.min.css" />
+    <link rel="stylesheet" href="vendor/textAngular/dist/textAngular.css" />
+    <link rel="stylesheet" href="vendor/ui-form/dist/ui-form-bootstrap.css" />
+    <link rel="stylesheet" href="vendor/ui-form/docs/styles.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
 </head>
 <body>
-<section class="page-header">
-    <h1 class="project-name">AngularJS ui-form</h1>
-    <h2 class="project-tagline">Easy-to-use API-friendly AngularJS set of useful form fields.</h2>
-    <a href="https://github.com/ravaj-group/angular-ui-form" class="btn">View on GitHub</a>
-    <a href="https://github.com/ravaj-group/angular-ui-form/zipball/master" class="btn">Download .zip</a>
-    <a href="https://github.com/ravaj-group/angular-ui-form/tarball/master" class="btn">Download .tar.gz</a>
-</section>
 
-<section class="main-content" ng-app="ui.form.examples">
+    <section class="site-header">
+        <h1 class="project-name">AngularJS ui-form</h1>
+        <h2 class="project-tagline">Easy-to-use API-friendly AngularJS set of useful form fields.</h2>
+        <a href="https://github.com/ravaj-group/angular-ui-form" class="btn">View on GitHub</a>
+        <a href="https://github.com/ravaj-group/angular-ui-form/zipball/master" class="btn">Download .zip</a>
+        <a href="https://github.com/ravaj-group/angular-ui-form/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
+    <section class="main-content" ng-app="ui.form.docs">
+        <div class="clearfix" ui-view></div>
 
-    <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/ravaj-group/angular-ui-form">AngularJS
-            ui-form</a> is maintained by <a
-                href="https://github.com/ravaj-group">Ravaj Group</a>.</span>
-    </footer>
-</section>
+        <footer class="site-footer">
+            <span class="site-footer-owner"><a href="https://github.com/ravaj-group/angular-ui-form">AngularJS
+                ui-form</a> is maintained by <a
+                    href="https://github.com/ravaj-group">Ravaj Group</a>.</span>
+        </footer>
+    </section>
 
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="vendor/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="vendor/lodash/lodash.js"></script>
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/angular-translate/angular-translate.js"></script>
+    <script src="vendor/angular-fcsa-number/src/fcsaNumber.js"></script>
+    <script src="vendor/plupload/js/moxie.js"></script>
+    <script src="vendor/plupload/js/plupload.dev.js"></script>
+    <script src="vendor/textAngular/dist/textAngular-rangy.min.js"></script>
+    <script src="vendor/textAngular/dist/textAngular-sanitize.min.js"></script>
+    <script src="vendor/textAngular/dist/textAngular.min.js"></script>
+    <script src="vendor/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="vendor/angular-bootstrap-persian-datepicker/persiandate.js"></script>
+    <script src="vendor/angular-bootstrap-persian-datepicker/persian-datepicker-tpls.js"></script>
+    <script src="vendor/ui-form/dist/ui-form.js"></script>
+    <script src="vendor/ui-form/dist/ui-form-templates-bootstrap.js"></script>
+    <script src="vendor/ui-form/docs/dist/ui-form-docs.js"></script>
+    <script src="vendor/ui-form/docs/dist/ui-form-docs-templates.js"></script>
 
 </body>
 </html>

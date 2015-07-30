@@ -97,7 +97,7 @@ module.exports = function ( grunt ) {
          * Concatenates multiple source files into a single file.
          */
         concat: {
-            scripts: {
+            app: {
                 options: {
                     banner: '<%= meta.banner %>'
                 },
@@ -105,6 +105,12 @@ module.exports = function ( grunt ) {
                     '<%= app.scripts %>'
                 ],
                 dest: '<%= dist_dir %>/ui-form.js'
+            },
+            docs: {
+                src: [
+                    '<%= docs.scripts %>'
+                ],
+                dest: 'docs/dist/ui-form-docs.js'
             }
         },
 
@@ -135,7 +141,7 @@ module.exports = function ( grunt ) {
                     {
                         expand: true,
                         cwd: '<%= dist_dir %>',
-                        src: [ '**/*.js', '!*.min.js' ],
+                        src: [ '*.js', '!*.min.js' ],
                         dest: '<%= dist_dir %>'
                     }
                 ]
@@ -199,6 +205,20 @@ module.exports = function ( grunt ) {
                 },
                 src: '<%= app.templates.bootstrap %>',
                 dest: '<%= dist_dir %>/ui-form-templates-bootstrap.js'
+            },
+
+            /**
+             * These are the templates we use in docs and examples.
+             */
+            docs: {
+                options: {
+                    module: 'ui.form.docs',
+                    url: function(url) {
+                        return 'ui-form/' + url.replace('src/', '');
+                    }
+                },
+                src: 'docs/src/**/*.html',
+                dest: 'docs/dist/ui-form-docs-templates.js'
             }
         },
 
@@ -252,7 +272,8 @@ module.exports = function ( grunt ) {
              */
             scripts: {
                 files: [
-                    '<%= app.scripts %>'
+                    '<%= app.scripts %>',
+                    '<%= docs.scripts %>'
                 ],
                 tasks: [ 'jshint:src', 'karma:unit:run', 'concat' ]
             },
