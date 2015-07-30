@@ -14,7 +14,7 @@ module.exports = {
     },
 
     getData: function(pageObject) {
-        return pageObject.getElement().element(by.css('input[type=checkbox]')).then(function (selected) {
+        return pageObject.getElement().element(by.css('input[type=checkbox]')).isSelected().then(function (selected) {
             return selected ? '1' : '0';
         });
     },

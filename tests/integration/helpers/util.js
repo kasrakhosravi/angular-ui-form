@@ -1,10 +1,36 @@
 var _ = require('lodash');
 
 module.exports = {
+    promiseWhile: promiseWhile,
     objectValues: objectValues,
     walkByPromise: walkByPromise,
     click: click
 };
+
+// `condition` is a function that returns a boolean
+// `body` is a function that returns a promise
+// returns a promise for the completion of the loop
+function promiseWhile(condition, body) {
+    var done = protractor.promise.defer();
+
+    function loop() {
+        // When the result of calling `condition` is no longer true, we are
+        // done.
+        if (!condition()) return done.fulfill();
+        // Use `when`, in case `body` does not return a promise.
+        // When it completes loop again otherwise, if it fails, reject the
+        // done promise
+        protractor.promise.when(body(), loop, done.reject);
+    }
+
+    // Start running the loop in the next tick so that this function is
+    // completely async. It would be unexpected if `body` was called
+    // synchronously the first time.
+    process.nextTick(loop);
+
+    // The promise
+    return done.promise;
+}
 
 /**
  * Takes an object and returns values in an array. (Gets rid of keys)
