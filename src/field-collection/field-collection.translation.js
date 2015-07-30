@@ -6,8 +6,12 @@
         .config(translationsConfig);
 
     function translationsConfig($translateProvider) {
+        $translateProvider.translations('en_US', {
+            'ui.form.field.collection.add_button': 'Add'
+        });
+
         $translateProvider.translations('fa_IR', {
-            'ui.form.collection.add': 'افزودن گزینه'
+            'ui.form.field.collection.add_button': 'افزودن گزینه'
         });
     }
 
