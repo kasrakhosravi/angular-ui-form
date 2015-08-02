@@ -6,12 +6,20 @@ var defaultFieldHelper = require(path.resolve(__dirname, 'form/default.js'));
 
 /**
  * @param element Form element (ui-form or ui-field-* directives)
+ * @param identifier
  * @constructor
  */
-function FormPageObject(element) {
+function FormPageObject(element, identifier) {
     this.element = element;
-    this.children = [];
+    this.identifier = identifier;
 }
+
+/**
+ * @returns {string}
+ */
+FormPageObject.prototype.getIdentifier = function() {
+    return this.identifier;
+};
 
 /**
  * Returns form element directly or by calling the configured function.
@@ -35,13 +43,15 @@ FormPageObject.prototype.getProperty = function() {
  * Builds descendant page objects of form children.
  */
 FormPageObject.prototype.buildChildrenPageObjects = function () {
-    var me = this;
-
-    // Reset children since they may be detached from DOM.
-    me.children = [];
+    var me = this,
+        children = [];
 
     return me.walkOnDirectFormChildren(function (childElement) {
-        me.children.push(new FormPageObject(childElement));
+        return childElement.getWebElement().getId().then(function (elementId) {
+            return children.push(new FormPageObject(childElement, elementId.ELEMENT));
+        });
+    }).then(function () {
+        return children;
     });
 };
 
@@ -102,16 +112,11 @@ FormPageObject.prototype.setData = function() {
         args = arguments;
 
     return browser.driver.call(function () {
-        return me
-            .buildChildrenPageObjects()
-            .then(function () {
-                return me.getHelper();
-            })
-            .then(function (helper) {
-                return util.walkByPromise(args, function (data) {
-                    return helper.setData(me, data);
-                });
+        return me.getHelper().then(function (helper) {
+            return util.walkByPromise(args, function (data) {
+                return helper.setData(me, data);
             });
+        });
     });
 };
 
@@ -124,14 +129,9 @@ FormPageObject.prototype.getData = function() {
     var me = this;
 
     return browser.driver.call(function () {
-        return me
-            .buildChildrenPageObjects()
-            .then(function () {
-                return me.getHelper();
-            })
-            .then(function (helper) {
-                return helper.getData(me);
-            });
+        return me.getHelper().then(function (helper) {
+            return helper.getData(me);
+        });
     });
 };
 
@@ -144,14 +144,9 @@ FormPageObject.prototype.clearData = function() {
     var me = this;
 
     return browser.driver.call(function () {
-        return me
-            .buildChildrenPageObjects()
-            .then(function () {
-                return me.getHelper();
-            })
-            .then(function (helper) {
-                return helper.clearData(me);
-            });
+        return me.getHelper().then(function (helper) {
+            return helper.clearData(me);
+        });
     });
 };
 
@@ -164,14 +159,9 @@ FormPageObject.prototype.getErrors = function() {
     var me = this;
 
     return browser.driver.call(function () {
-        return me
-            .buildChildrenPageObjects()
-            .then(function () {
-                return me.getHelper();
-            })
-            .then(function (helper) {
-                return helper.getErrors(me);
-            });
+        return me.getHelper().then(function (helper) {
+            return helper.getErrors(me);
+        });
     });
 };
 
