@@ -31,7 +31,7 @@ module.exports = {
                                         var promise;
 
                                         if (nodePath.length === 0) {
-                                            promise = nodeElement.element(by.xpath('./div')).click();
+                                            promise = childNodeElement.element(by.xpath('./div')).click();
                                         } else {
                                             promise = selectNode(childNodeElement, nodePath);
                                         }
