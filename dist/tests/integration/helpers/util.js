@@ -4,12 +4,29 @@ module.exports = {
     promiseWhile: promiseWhile,
     objectValues: objectValues,
     walkByPromise: walkByPromise,
+    isFormDataEmpty: isFormDataEmpty,
     click: click
 };
 
-// `condition` is a function that returns a boolean
-// `body` is a function that returns a promise
-// returns a promise for the completion of the loop
+/**
+ * Returns true if data is undefined, an empty string, empty array, or an object with no keys.
+ *
+ * @param data
+ * @returns {boolean}
+ */
+function isFormDataEmpty(data) {
+    return !data || data === '' ||
+        (_.isObject(data) && Object.keys(data).length === 0) ||
+        (_.isArray(data) && data.length === 0)
+        ;
+}
+
+/**
+ *
+ * @param {function} condition is a function that returns a boolean
+ * @param {function} body is a function that returns a promise
+ * @returns {Promise}
+ */
 function promiseWhile(condition, body) {
     var done = protractor.promise.defer();
 
