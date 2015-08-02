@@ -101,7 +101,13 @@ module.exports = {
                                     }
                                 } else {
                                     if (typeof childData === 'object') {
-                                        _.merge(data, childData);
+                                        if (_.isArray(data)) {
+                                            data = data.concat(childData);
+                                        } else if (Object.keys(data).length === 0) {
+                                            data = childData;
+                                        } else {
+                                            _.merge(data, childData);
+                                        }
                                     } else {
                                         data = childData;
                                     }
