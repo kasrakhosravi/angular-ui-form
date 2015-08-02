@@ -21,16 +21,12 @@ module.exports = {
         },
         styles: {
             bootstrap: [
-                'src/forms.bs.scss'
+                'src/form.bs.scss'
             ],
             material: [
-                'src/forms.md.scss'
+                'src/form.md.scss'
             ]
         },
-        assets: [
-            // By distributing our e2e helpers we help applications to write e2e tests on their forms.
-            'tests/integration/helpers/**/*'
-        ],
         tests: [
             'tests/unit/**/*.spec.js'
         ]

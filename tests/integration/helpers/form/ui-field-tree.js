@@ -28,10 +28,18 @@ module.exports = {
                             childNodeElement.element(by.xpath('./div')).getText().then(function (text) {
                                 if (!resolved) {
                                     if (firstStep === _.trim(text)) {
-                                        selectNode(childNodeElement, nodePath).then(function () {
+                                        var promise;
+
+                                        if (nodePath.length === 0) {
+                                            promise = nodeElement.element(by.xpath('./div')).click();
+                                        } else {
+                                            promise = selectNode(childNodeElement, nodePath);
+                                        }
+
+                                        promise.then(function () {
                                             resolved = true;
                                             d.fulfill(true);
-                                        });
+                                        })
                                     } else if (index >= total - 1) {
                                         throw new Error('Could not find node on path "' + originalNodePath.join(' -> ') + '" in ui-field-tree');
                                     }
@@ -42,7 +50,7 @@ module.exports = {
 
                     return d.promise;
                 } else {
-                    return nodeElement.element(by.xpath('./div')).click();
+                    return protractor.promise.when(true);
                 }
             }
         });
@@ -110,7 +118,7 @@ module.exports = {
     },
 
     clearData: function(pageObject) {
-        return pageObject.getElement().all(by.css('.tree-node-anchor > i')).map(function (element) {
+        return pageObject.getElement().all(by.css('.tree-node-anchor > i.glyphicon-ok')).map(function (element) {
             return element.click();
         });
     },

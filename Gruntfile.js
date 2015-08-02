@@ -4,7 +4,6 @@ module.exports = function ( grunt ) {
      * Load required Grunt tasks. These are installed based on the versions listed
      * in `package.json` when you do `npm install` in this directory.
      */
-    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
@@ -76,21 +75,6 @@ module.exports = function ( grunt ) {
                 eqnull: true
             },
             globals: {}
-        },
-
-        /**
-         * Copy distributed assets such as e2e-helpers to be used by applications using this library.
-         */
-        copy: {
-            assets: {
-                files: [
-                    {
-                        expand: true,
-                        src: '<%= app.assets %>',
-                        dest: '<%= dist_dir %>'
-                    }
-                ]
-            }
         },
 
         /**
@@ -329,7 +313,7 @@ module.exports = function ( grunt ) {
      * The `build` task gets your app ready to run for development and testing.
      */
     grunt.registerTask( 'build', [
-        'jscs', 'jshint', 'ngtemplates', 'concat', 'sass', 'autoprefixer', 'copy'
+        'jscs', 'jshint', 'ngtemplates', 'concat', 'sass', 'autoprefixer'
     ]);
 
     /**
