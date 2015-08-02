@@ -24,7 +24,7 @@ module.exports = {
                             if (key) {
                                 return headers.get(index).click().then(function () {
                                     var chunk = {};
-                                        chunk[property] = data[key];
+                                    chunk[property] = data[key];
 
                                     return DefaultHelper.setData(pageObject, chunk);
                                 });
@@ -68,9 +68,11 @@ module.exports = {
                                             .element(by.xpath('./ui-fieldset'))
                                     )
                                 )
-                                .then(function (paneData) {
-                                    data[header.text] = paneData;
-                                });
+                                    .then(function (paneData) {
+                                        if (!util.isFormDataEmpty(paneData)) {
+                                            data[header.text] = paneData;
+                                        }
+                                    });
                             });
                         });
                     })
