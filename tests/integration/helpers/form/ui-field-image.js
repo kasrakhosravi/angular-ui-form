@@ -4,13 +4,16 @@ var DefaultHelper = require('./default');
 module.exports = {
 
     setData: function(pageObject, data) {
+        if (typeof data !== 'object') {
+            data = [data];
+        }
+
         return this.clearData(pageObject).then(function () {
             return util.walkByPromise(data, function (image) {
                 return pageObject.getElement()
                     .element(by.css('input[type=file]'))
                     .sendKeys(image)
                     .then(function () {
-                        // FIXME Should find a way to wait for ajax upload.
                         return browser.sleep(5000);
                     })
                     .then(function () {
@@ -21,11 +24,15 @@ module.exports = {
     },
 
     getData: function(pageObject) {
-        return pageObject.getElement()
-            .all(by.repeater('image in vm.data track by $index'))
-            .count().then(function(total) {
-                return total
-            });
+        var formElement = pageObject.getElement();
+
+        return formElement.all(by.repeater('image in vm.data track by $index')).count().then(function(total) {
+            return formElement
+                .element(by.css('[ng-if="!vm.multiple() && vm.data"]')).isPresent()
+                .then(function (singleImageHolderPresent) {
+                    return total + singleImageHolderPresent;
+                });
+        });
     },
 
     clearData: function(pageObject) {
