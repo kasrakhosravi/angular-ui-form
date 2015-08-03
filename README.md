@@ -1,6 +1,6 @@
 # [AngularJS Forms](http://ravaj-group.github.io/angular-ui-form)
 
-[![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Build Status](https://travis-ci.org/ravaj-group/angular-ui-form.svg)](https://travis-ci.org/ravaj-group/angular-ui-form)
 
 Extensible easy-to-use API-friendly AngularJS set of useful form fields. Nested fieldsets, server-side/client-side validation messages, Choice, Tree, Image, Collection and many more. RTL styles supported.
