@@ -5,10 +5,6 @@ var DefaultHelper = require('./default');
 module.exports = {
 
     setData: function(pageObject, data) {
-        if (typeof data !== 'object') {
-            data = [data];
-        }
-
         return util.walkByPromise(data, function (originalNodePath) {
             return selectNode(
                 pageObject.getElement().element(by.css('.angular-ui-tree')),

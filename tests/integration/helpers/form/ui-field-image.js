@@ -10,7 +10,8 @@ module.exports = {
                     .element(by.css('input[type=file]'))
                     .sendKeys(image)
                     .then(function () {
-                        return browser.sleep(1000);
+                        // FIXME Should find a way to wait for ajax upload.
+                        return browser.sleep(5000);
                     })
                     .then(function () {
                         return browser.waitForAngular();
