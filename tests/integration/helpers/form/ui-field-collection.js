@@ -29,28 +29,33 @@ module.exports = {
     },
 
     getData: function(pageObject) {
-        var deferred = protractor.promise.defer(),
-            children = pageObject.getElement().all(by.xpath('./ui-field-row/div/div/ng-transclude/ul/li')),
-            data = {};
+        var children = pageObject.getElement().all(by.xpath('./ui-field-row/div/div/ng-transclude/ul/li')),
+            data = [];
 
-        children.count().then(function (total) {
+        return children.count().then(function (total) {
             if (total > 0) {
-                children.each(function (child, index) {
-                    var formPageObject = new FormPageObject(child);
-                    formPageObject.getData().then(function (childData) {
-                        _.merge(data, childData);
+                return children
+                    .map(function (element, index) {
+                        return {
+                            index: index
+                        };
+                    })
+                    .then(function (childrenArray) {
+                        return util.walkByPromise(childrenArray, function (childArray) {
+                            var formPageObject = new FormPageObject(
+                                children.get(childArray.index).element(by.xpath('./ui-fieldset'))
+                            );
 
-                        if (index >= total - 1) {
-                            deferred.fulfill(util.objectValues(data));
-                        }
+                            return formPageObject.getData().then(function (childData) {
+                                return data.push(childData);
+                            });
+                        });
+                    })
+                    .then(function () {
+                        return data;
                     });
-                });
-            } else {
-                deferred.fulfill(data);
             }
         });
-
-        return deferred.promise;
     },
 
     clearData: function(pageObject) {
