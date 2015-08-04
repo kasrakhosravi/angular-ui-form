@@ -2,6 +2,12 @@ var _ = require('lodash');
 var util = require('../util');
 var DefaultHelper = require('./default');
 
+function isNodeSelected(nodeElement) {
+    return nodeElement.element(by.xpath('./div/i[contains(@class, "glyphicon-ok")]')).isPresent().then(function (nodeSelected) {
+        return nodeSelected;
+    });
+}
+
 module.exports = {
 
     setData: function(pageObject, data) {
@@ -27,7 +33,9 @@ module.exports = {
                                         var promise;
 
                                         if (nodePath.length === 0) {
-                                            promise = childNodeElement.element(by.xpath('./div')).click();
+                                            promise = isNodeSelected(childNodeElement).then(function () {
+                                                return childNodeElement.element(by.xpath('./div')).click();
+                                            });
                                         } else {
                                             promise = selectNode(childNodeElement, nodePath);
                                         }
@@ -75,7 +83,7 @@ module.exports = {
                         nodeFullPath = (nodeText === '' ? parentPath : parentPath.concat(nodeText));
 
                     if (hasText) {
-                        promise = nodeElement.element(by.xpath('./div/i[contains(@class, "glyphicon-ok")]')).isPresent().then(function (nodeSelected) {
+                        promise = isNodeSelected(nodeElement).then(function (nodeSelected) {
                             if (nodeSelected) {
                                 data.push(nodeFullPath);
                             }
