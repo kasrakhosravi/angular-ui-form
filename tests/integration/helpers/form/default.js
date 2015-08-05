@@ -49,14 +49,14 @@ module.exports = {
                             } else {
                                 return currentChild.setData(data);
                             }
-                        })
+                        }, deferred.reject)
                         .then(function (result) {
                             // FIXME This is a very expensive call, we need this because of dynamically changing forms. Perhaps we should change our e2e-form helpers architecture.
                             return pageObject.buildChildrenPageObjects().then(function (updatedChildren) {
                                 children = updatedChildren;
                                 return result;
                             });
-                        });
+                        }, deferred.reject);
                 });
 
                 return deferred.promise;
