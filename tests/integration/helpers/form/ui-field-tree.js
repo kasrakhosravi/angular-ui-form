@@ -33,8 +33,10 @@ module.exports = {
                                         var promise;
 
                                         if (nodePath.length === 0) {
-                                            promise = isNodeSelected(childNodeElement).then(function () {
-                                                return childNodeElement.element(by.xpath('./div')).click();
+                                            promise = isNodeSelected(childNodeElement).then(function (selected) {
+                                                if (!selected) {
+                                                    return childNodeElement.element(by.xpath('./div')).click();
+                                                }
                                             });
                                         } else {
                                             promise = selectNode(childNodeElement, nodePath);
@@ -43,11 +45,14 @@ module.exports = {
                                         promise.then(function () {
                                             resolved = true;
                                             d.fulfill(true);
-                                        })
+                                        }, d.reject);
+
                                     } else if (index >= total - 1) {
-                                        throw new Error('Could not find node on path "' + originalNodePath.join(' -> ') + '" in ui-field-tree');
+                                        d.reject('Could not find node on path "' + originalNodePath.join(' -> ') + '" in ui-field-tree');
                                     }
                                 }
+                            }, function (err) {
+                                d.reject(err);
                             });
                         });
                     });
@@ -66,9 +71,9 @@ module.exports = {
         return getSelectedNodesPaths(
             pageObject.getElement().element(by.css('.angular-ui-tree'))
         )
-        .then(function () {
-            return data;
-        });
+            .then(function () {
+                return data;
+            });
 
         function getSelectedNodesPaths(nodeElement, parentPath) {
             if (typeof parentPath === 'undefined') {
