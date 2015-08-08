@@ -22,7 +22,9 @@
     "dist/ui-form.js"
   ],
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "ui-breadcrumb": "~0.0.4"
+  },
   "devDependencies": {
     "lodash": "~3.10.0",
     "bootstrap": "~3.3.2",

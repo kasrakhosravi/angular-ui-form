@@ -12,7 +12,7 @@
                 templateUrl: 'ui-form/docs/examples/field-choice/template.html',
                 controller: 'ExampleFieldChoiceController',
                 controllerAs: 'vm',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label: 'Field Choice'
                 }
             })

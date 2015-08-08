@@ -15,7 +15,7 @@
             .state('ui.form.docs.examples', {
                 url: '/examples',
                 template: '<ui-view />',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label:'Examples'
                 }
             })

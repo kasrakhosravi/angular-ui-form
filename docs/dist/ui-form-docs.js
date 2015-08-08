@@ -33,14 +33,14 @@
                 url: '/docs',
                 abstract: true,
                 templateUrl: 'ui-form/docs/main.html',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label: 'ui-form'
                 }
             })
             .state('ui.form.docs.welcome', {
                 url: '/welcome',
                 templateUrl: 'ui-form/docs/welcome.html',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label: 'Welcome'
                 }
             })
@@ -66,7 +66,7 @@
             .state('ui.form.docs.examples', {
                 url: '/examples',
                 template: '<ui-view />',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label:'Examples'
                 }
             })
@@ -89,7 +89,7 @@
                 templateUrl: 'ui-form/docs/examples/field-choice/template.html',
                 controller: 'ExampleFieldChoiceController',
                 controllerAs: 'vm',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label: 'Field Choice'
                 }
             })
@@ -169,7 +169,7 @@
                 url: '/simple-form',
                 templateUrl: 'ui-form/docs/examples/simple-form/template.html',
                 controller: 'ExampleSimpleFormController',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label: 'A very simple form'
                 }
             })
@@ -257,7 +257,7 @@
             .state('ui.form.docs.guide', {
                 url: '/guide',
                 template: '<ui-view />',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label:'Examples'
                 }
             })
@@ -278,7 +278,7 @@
             .state('ui.form.docs.guide.getting_started', {
                 url: '/getting-started',
                 templateUrl: 'ui-form/docs/guide/getting-started/template.html',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label: 'Getting Started'
                 }
             })
