@@ -1,0 +1,86 @@
+<h2>Field Choice (ui-field-choice)</h2>
+<div class="row">
+    <div class="col-sm-7">
+        <ui-form ng-model="vm.data" debug="vm.debug" errors="vm.errors" loading="vm.loading">
+            <ui-field-choice property="Food"
+                             required="true"
+                             label="Food"
+                             inline-options="[
+                                {
+                                    label: 'Pizza',
+                                    value: 'Pizza'
+                                },
+                                {
+                                    label: 'Burger',
+                                    value: 'Burger'
+                                },
+                                {
+                                    label: 'Pasta',
+                                    value: 'Pasta'
+                                }
+                             ]"
+                             selected="vm.selectedFood"
+                             help="What would you like to order?"></ui-field-choice>
+            <div ng-switch="vm.selectedFood.value">
+                <ui-field-choice property="Pizza"
+                             required="true"
+                             label="Pizza"
+                             options-root="food.pizza"
+                             remote-url="src/data/menu.json"
+                             value-property="topping"
+                             label-property="topping"
+                             ng-switch-when="Pizza"
+                             help="You have ordered a pizza with {{ vm.data.Pizza }}"></ui-field-choice>
+                <ui-field-choice property="Burger"
+                             required="true"
+                             label="Burger"
+                             options-root="food.burger"
+                             remote-url="src/data/menu.json"
+                             value-property="type"
+                             label-property="type"
+                             ng-switch-when="Burger"
+                             help="You have ordered a {{ vm.data.Burger }}"></ui-field-choice>
+                <ui-field-choice property="Pasta"
+                             required="true"
+                             label="Pasta"
+                             options-root="food.pasta"
+                             remote-url="src/data/menu.json"
+                             value-property="type"
+                             label-property="type"
+                             ng-switch-when="Pasta"
+                             help="You have ordered a {{ vm.data.Pasta }}"></ui-field-choice>
+            </div>
+            <ui-field-choice property="Sides"
+                             label="Sides"
+                             multiple="true"
+                             options-root="food.sides"
+                             remote-url="src/data/menu.json"
+                             value-property="type"
+                             label-property="type"
+                             help="I suggest you to try few of our sides"></ui-field-choice>
+            <ui-field-choice property="Drink"
+                             label="Drink"
+                             expanded="true"
+                             options-root="food.drink"
+                             remote-url="src/data/menu.json"
+                             value-property="type"
+                             label-property="type"
+                             help="You have ordered {{ vm.data.Drink }}. Anything else?"></ui-field-choice>
+            <ui-field-choice property="Dessert"
+                             label="Dessert"
+                             expanded="true"
+                             multiple="true"
+                             options-root="food.dessert"
+                             remote-url="src/data/menu.json"
+                             value-property="type"
+                             label-property="type"></ui-field-choice>
+        </ui-form>
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" ng-click="vm.save()">Save</button>
+            <button class="btn btn-default" ng-click="vm.saveWithErrors()">Save, but errors</button>
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <pre>{{ vm.data | json }}</pre>
+    </div>
+</div>
