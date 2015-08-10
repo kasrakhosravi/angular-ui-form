@@ -12,7 +12,6 @@
             scope: {
                 required: '&?',
                 readonly: '&?',
-                disabled: '&?',
                 placeholder: '@?',
                 pattern: '&?'
             },
