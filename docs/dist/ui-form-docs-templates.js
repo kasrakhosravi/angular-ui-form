@@ -7,7 +7,6 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "    <div class=\"col-sm-7\">\n" +
     "        <ui-form ng-model=\"vm.data\" debug=\"vm.debug\" errors=\"vm.errors\" loading=\"vm.loading\">\n" +
     "            <ui-field-choice property=\"Food\"\n" +
-    "                             required=\"true\"\n" +
     "                             label=\"Food\"\n" +
     "                             inline-options=\"[\n" +
     "                                {\n" +
@@ -64,6 +63,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "                             help=\"I suggest you to try few of our sides\"></ui-field-choice>\n" +
     "            <ui-field-choice property=\"Drink\"\n" +
     "                             label=\"Drink\"\n" +
+    "                             required=\"true\"\n" +
     "                             expanded=\"true\"\n" +
     "                             options-root=\"food.drink\"\n" +
     "                             remote-url=\"src/data/menu.json\"\n" +

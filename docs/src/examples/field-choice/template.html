@@ -3,7 +3,6 @@
     <div class="col-sm-7">
         <ui-form ng-model="vm.data" debug="vm.debug" errors="vm.errors" loading="vm.loading">
             <ui-field-choice property="Food"
-                             required="true"
                              label="Food"
                              inline-options="[
                                 {
@@ -60,6 +59,7 @@
                              help="I suggest you to try few of our sides"></ui-field-choice>
             <ui-field-choice property="Drink"
                              label="Drink"
+                             required="true"
                              expanded="true"
                              options-root="food.drink"
                              remote-url="src/data/menu.json"

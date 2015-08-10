@@ -7,7 +7,7 @@ describe('Field Choice', function() {
     function compileChoiceField(config) {
         scope = $rootScope.$new();
         var formElement = angular.element(
-            '<ui-field-choice ng-model="data" ' + config + '></ui-field-text>'
+            '<ui-field-choice ng-model="data" ' + config + '></ui-field-choice>'
         );
         element = $compile(formElement)(scope);
     }
@@ -26,7 +26,7 @@ describe('Field Choice', function() {
         beforeEach(inject(function () {
             scope = $rootScope.$new();
             var formElement = angular.element(
-                '<ui-field-choice ng-model="data" inline-options="inlineOptions"></ui-field-text>'
+                '<ui-field-choice ng-model="data" inline-options="inlineOptions" required="true"></ui-field-choice>'
             );
             element = $compile(formElement)(scope);
         }));
@@ -42,7 +42,7 @@ describe('Field Choice', function() {
                     baz: 'ban'
                 };
 
-                scope.data = 'baz';
+                scope.data = 'ban';
             });
 
             expect(element.find('option').length).toBe(2);
