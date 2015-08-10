@@ -11,7 +11,7 @@
                 url: '/simple-form',
                 templateUrl: 'ui-form/docs/examples/simple-form/template.html',
                 controller: 'ExampleSimpleFormController',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label: 'A very simple form'
                 }
             })

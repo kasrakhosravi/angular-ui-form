@@ -1,6 +1,96 @@
 angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
   'use strict';
 
+  $templateCache.put('ui-form/docs/examples/field-choice/template.html',
+    "<h2>Field Choice (ui-field-choice)</h2>\n" +
+    "<div class=\"row\">\n" +
+    "    <div class=\"col-sm-7\">\n" +
+    "        <ui-form ng-model=\"vm.data\" debug=\"vm.debug\" errors=\"vm.errors\" loading=\"vm.loading\">\n" +
+    "            <ui-field-choice property=\"Food\"\n" +
+    "                             label=\"Food\"\n" +
+    "                             inline-options=\"[\n" +
+    "                                {\n" +
+    "                                    label: 'Pizza',\n" +
+    "                                    value: 'Pizza'\n" +
+    "                                },\n" +
+    "                                {\n" +
+    "                                    label: 'Burger',\n" +
+    "                                    value: 'Burger'\n" +
+    "                                },\n" +
+    "                                {\n" +
+    "                                    label: 'Pasta',\n" +
+    "                                    value: 'Pasta'\n" +
+    "                                }\n" +
+    "                             ]\"\n" +
+    "                             selected=\"vm.selectedFood\"\n" +
+    "                             help=\"What would you like to order?\"></ui-field-choice>\n" +
+    "            <div ng-switch=\"vm.selectedFood.value\">\n" +
+    "                <ui-field-choice property=\"Pizza\"\n" +
+    "                             required=\"true\"\n" +
+    "                             label=\"Pizza\"\n" +
+    "                             options-root=\"food.pizza\"\n" +
+    "                             remote-url=\"src/data/menu.json\"\n" +
+    "                             value-property=\"topping\"\n" +
+    "                             label-property=\"topping\"\n" +
+    "                             ng-switch-when=\"Pizza\"\n" +
+    "                             help=\"You have ordered a pizza with {{ vm.data.Pizza }}\"></ui-field-choice>\n" +
+    "                <ui-field-choice property=\"Burger\"\n" +
+    "                             required=\"true\"\n" +
+    "                             label=\"Burger\"\n" +
+    "                             options-root=\"food.burger\"\n" +
+    "                             remote-url=\"src/data/menu.json\"\n" +
+    "                             value-property=\"type\"\n" +
+    "                             label-property=\"type\"\n" +
+    "                             ng-switch-when=\"Burger\"\n" +
+    "                             help=\"You have ordered a {{ vm.data.Burger }}\"></ui-field-choice>\n" +
+    "                <ui-field-choice property=\"Pasta\"\n" +
+    "                             required=\"true\"\n" +
+    "                             label=\"Pasta\"\n" +
+    "                             options-root=\"food.pasta\"\n" +
+    "                             remote-url=\"src/data/menu.json\"\n" +
+    "                             value-property=\"type\"\n" +
+    "                             label-property=\"type\"\n" +
+    "                             ng-switch-when=\"Pasta\"\n" +
+    "                             help=\"You have ordered a {{ vm.data.Pasta }}\"></ui-field-choice>\n" +
+    "            </div>\n" +
+    "            <ui-field-choice property=\"Sides\"\n" +
+    "                             label=\"Sides\"\n" +
+    "                             multiple=\"true\"\n" +
+    "                             options-root=\"food.sides\"\n" +
+    "                             remote-url=\"src/data/menu.json\"\n" +
+    "                             value-property=\"type\"\n" +
+    "                             label-property=\"type\"\n" +
+    "                             help=\"I suggest you to try few of our sides\"></ui-field-choice>\n" +
+    "            <ui-field-choice property=\"Drink\"\n" +
+    "                             label=\"Drink\"\n" +
+    "                             required=\"true\"\n" +
+    "                             expanded=\"true\"\n" +
+    "                             options-root=\"food.drink\"\n" +
+    "                             remote-url=\"src/data/menu.json\"\n" +
+    "                             value-property=\"type\"\n" +
+    "                             label-property=\"type\"\n" +
+    "                             help=\"You have ordered {{ vm.data.Drink }}. Anything else?\"></ui-field-choice>\n" +
+    "            <ui-field-choice property=\"Dessert\"\n" +
+    "                             label=\"Dessert\"\n" +
+    "                             expanded=\"true\"\n" +
+    "                             multiple=\"true\"\n" +
+    "                             options-root=\"food.dessert\"\n" +
+    "                             remote-url=\"src/data/menu.json\"\n" +
+    "                             value-property=\"type\"\n" +
+    "                             label-property=\"type\"></ui-field-choice>\n" +
+    "        </ui-form>\n" +
+    "        <div class=\"col-sm-offset-2 col-sm-10\">\n" +
+    "            <button class=\"btn btn-primary\" ng-click=\"vm.save()\">Save</button>\n" +
+    "            <button class=\"btn btn-default\" ng-click=\"vm.saveWithErrors()\">Save, but errors</button>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"col-sm-5\">\n" +
+    "        <pre>{{ vm.data | json }}</pre>\n" +
+    "    </div>\n" +
+    "</div>"
+  );
+
+
   $templateCache.put('ui-form/docs/examples/simple-form/template.html',
     "<h2>A very simple form</h2>\n" +
     "<div class=\"row\">\n" +
@@ -60,6 +150,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "            </div>\n" +
     "            <div class=\"list-group\">\n" +
     "                <a ui-sref-active=\"active\" ui-sref=\"ui.form.docs.examples.simple_form\" class=\"list-group-item\">A very simple form</a>\n" +
+    "                <a ui-sref-active=\"active\" ui-sref=\"ui.form.docs.examples.field_choice\" class=\"list-group-item\">Field Choice</a>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "\n" +

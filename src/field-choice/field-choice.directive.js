@@ -17,6 +17,7 @@
                 valueProperty: '@?',
                 labelProperty: '@?',
                 selected: '=?',
+                required: '&?',
                 multiple: '&?',
                 expanded: '&?'
             }
