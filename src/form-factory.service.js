@@ -32,8 +32,9 @@
                     data: '=?ngModel',
                     loading: '=?',
                     errors: '=?',
-                    debug: '&?'
-                    // TODO Add disabled, required, pattern
+                    debug: '&?',
+                    disabled: '=?'
+                    // TODO Add required, pattern
                 }
             });
         }

@@ -102,6 +102,10 @@
                     } else {
                         updateSelectedOption();
                     }
+                }, function() {
+                    vm.disabled = true;
+                    vm.loading = false;
+                    vm.raiseError('ui.form.field.choice.remote_error');
                 });
             }
 
