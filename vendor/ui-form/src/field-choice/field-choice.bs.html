@@ -5,6 +5,7 @@
             class="form-control"
             ng-model="vm.data"
             ng-options="option[vm.valueProperty].toString() as option[vm.labelProperty] | translate for option in vm.options">
+        <option value="" ng-if="!vm.required()">{{ 'ui.form.field.choice.unselected_option'|translate }}</option>
     </select>
 
     <!-- Multiple value select without expanding -->
@@ -18,6 +19,9 @@
     <!-- Single value select via radio button -->
     <div ng-if="!vm.multiple() && vm.expanded()"
          class="form">
+        <div ng-if="!vm.required()">
+            <input type="radio" ng-model="vm.data" value="null"> {{ option[vm.labelProperty] | translate }}
+        </div>
         <label ng-repeat="option in vm.options">
             <input type="radio" ng-model="vm.data" value=" {{ option[vm.valueProperty].toString() }} "> {{ option[vm.labelProperty] | translate }}
         </label><br />

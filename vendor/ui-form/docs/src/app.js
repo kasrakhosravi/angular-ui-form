@@ -33,14 +33,14 @@
                 url: '/docs',
                 abstract: true,
                 templateUrl: 'ui-form/docs/main.html',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label: 'ui-form'
                 }
             })
             .state('ui.form.docs.welcome', {
                 url: '/welcome',
                 templateUrl: 'ui-form/docs/welcome.html',
-                ncyBreadcrumb: {
+                breadcrumb: {
                     label: 'Welcome'
                 }
             })

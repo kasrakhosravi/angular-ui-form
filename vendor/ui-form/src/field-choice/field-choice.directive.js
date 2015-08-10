@@ -10,13 +10,14 @@
             link: FieldChoiceLink,
             templateUrl: 'ui-form/field-choice/field-choice.html',
             scope: {
-                inlineOptions: '&?',
+                inlineOptions: '=?',
                 remoteUrl: '@?',
                 remoteParams: '&?',
                 optionsRoot: '@?',
                 valueProperty: '@?',
                 labelProperty: '@?',
                 selected: '=?',
+                required: '&?',
                 multiple: '&?',
                 expanded: '&?'
             }
@@ -28,10 +29,28 @@
             // Defaults
             setDefaults();
 
+            // Watch for changes in inline-options.
+            $scope.$watch(
+                'vm.inlineOptions',
+                function (inlineOptions) {
+                    if (vm.optionsRoot) {
+                        inlineOptions = formUtil.deepGet(inlineOptions, vm.optionsRoot);
+                    }
+
+                    vm.options = normalizeOptions(inlineOptions);
+
+                    if (typeof vm.data === 'undefined' && vm.options.length > 0) {
+                        if (!vm.multiple()) {
+                            vm.data = vm.options[0][vm.valueProperty].toString();
+                        }
+                    }
+                }
+            );
+
             // Watch for changes in parameters when remote route is set.
             if (vm.remoteUrl) {
                 $scope.$watch(
-                    function() {
+                    function () {
                         return vm.remoteParams();
                     },
                     updateChoiceWidget
@@ -53,30 +72,12 @@
                     vm.labelProperty = 'label';
                 }
 
-                if (typeof vm.inlineOptions === 'function') {
-                    var options;
-
-                    if (vm.optionsRoot) {
-                        options = formUtil.deepGet(vm.inlineOptions(), vm.optionsRoot);
-                    } else {
-                        options = vm.inlineOptions();
-                    }
-
-                    vm.options = normalizeOptions(options);
-                }
-
                 if (typeof vm.options === 'undefined') {
                     vm.options = [];
                 }
 
                 if (typeof vm.data === 'undefined' && vm.multiple()) {
                     vm.data = [];
-                }
-
-                if (typeof vm.data === 'undefined' && vm.options.length > 0) {
-                    if (!vm.multiple()) {
-                        vm.data = vm.options[0][vm.valueProperty].toString();
-                    }
                 }
             }
 
