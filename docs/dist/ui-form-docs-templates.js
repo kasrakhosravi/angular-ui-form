@@ -29,7 +29,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "                             required=\"true\"\n" +
     "                             label=\"Pizza\"\n" +
     "                             options-root=\"food.pizza\"\n" +
-    "                             remote-url=\"http://www.mocky.io/v2/55c8901b66d16faf08f63b9e\"\n" +
+    "                             remote-url=\"http://ui-form-data.getsandbox.com/menu\"\n" +
     "                             value-property=\"topping\"\n" +
     "                             label-property=\"topping\"\n" +
     "                             ng-switch-when=\"Pizza\"\n" +
@@ -38,7 +38,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "                             required=\"true\"\n" +
     "                             label=\"Burger\"\n" +
     "                             options-root=\"food.burger\"\n" +
-    "                             remote-url=\"http://www.mocky.io/v2/55c8901b66d16faf08f63b9e\"\n" +
+    "                             remote-url=\"http://ui-form-data.getsandbox.com/menu\"\n" +
     "                             value-property=\"type\"\n" +
     "                             label-property=\"type\"\n" +
     "                             ng-switch-when=\"Burger\"\n" +
@@ -47,7 +47,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "                             required=\"true\"\n" +
     "                             label=\"Pasta\"\n" +
     "                             options-root=\"food.pasta\"\n" +
-    "                             remote-url=\"http://www.mocky.io/v2/55c8901b66d16faf08f63b9e\"\n" +
+    "                             remote-url=\"http://ui-form-data.getsandbox.com/menu\"\n" +
     "                             value-property=\"type\"\n" +
     "                             label-property=\"type\"\n" +
     "                             ng-switch-when=\"Pasta\"\n" +
@@ -57,7 +57,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "                             label=\"Sides\"\n" +
     "                             multiple=\"true\"\n" +
     "                             options-root=\"food.sides\"\n" +
-    "                             remote-url=\"http://www.mocky.io/v2/55c8901b66d16faf08f63b9e\"\n" +
+    "                             remote-url=\"http://ui-form-data.getsandbox.com/menu\"\n" +
     "                             value-property=\"type\"\n" +
     "                             label-property=\"type\"\n" +
     "                             help=\"I suggest you to try few of our sides\"></ui-field-choice>\n" +
@@ -66,7 +66,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "                             required=\"true\"\n" +
     "                             expanded=\"true\"\n" +
     "                             options-root=\"food.drink\"\n" +
-    "                             remote-url=\"http://www.mocky.io/v2/55c8901b66d16faf08f63b9e\"\n" +
+    "                             remote-url=\"http://ui-form-data.getsandbox.com/menu\"\n" +
     "                             value-property=\"type\"\n" +
     "                             label-property=\"type\"\n" +
     "                             help=\"You have ordered {{ vm.data.Drink }}. Anything else?\"></ui-field-choice>\n" +
@@ -75,7 +75,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "                             expanded=\"true\"\n" +
     "                             multiple=\"true\"\n" +
     "                             options-root=\"food.dessert\"\n" +
-    "                             remote-url=\"http://www.mocky.io/v2/55c8901b66d16faf08f63b9e\"\n" +
+    "                             remote-url=\"http://ui-form-data.getsandbox.com/menu\"\n" +
     "                             value-property=\"type\"\n" +
     "                             label-property=\"type\"></ui-field-choice>\n" +
     "        </ui-form>\n" +
