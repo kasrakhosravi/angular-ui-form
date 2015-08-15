@@ -43,11 +43,11 @@
     "angular": "~1.3.17"
   },
   "homepage": "https://github.com/ravaj-group/angular-ui-form",
-  "_release": "f3a3b5890a",
+  "_release": "c5bfcb2a59",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "f3a3b5890a4fe6ea21fc30ef0d52088c54ea360d"
+    "commit": "c5bfcb2a5981c853590a04f3fe829e1b19add88f"
   },
   "_source": "git://github.com/ravaj-group/angular-ui-form.git",
   "_target": "master",
