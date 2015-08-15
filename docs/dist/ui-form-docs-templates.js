@@ -89,7 +89,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "    </div>\n" +
     "</div>\n" +
     "<hr />\n" +
-    "<iframe height='711' scrolling='no' src='//codepen.io/KasraKhosravi/embed/OVqrvx/?height=711&theme-id=17740&default-tab=html' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/KasraKhosravi/pen/OVqrvx/'>ui-form (field choice example)</a> by Kasra (<a href='http://codepen.io/KasraKhosravi'>@KasraKhosravi</a>) on <a href='http://codepen.io'>CodePen</a>.\n" +
+    "<iframe height='711' scrolling='no' src='//codepen.io/KasraKhosravi/embed/Jdzppy/?height=711&theme-id=17740&default-tab=html' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/KasraKhosravi/pen/Jdzppy/'>ui-form (simple form example)</a> by Kasra (<a href='http://codepen.io/KasraKhosravi'>@KasraKhosravi</a>) on <a href='http://codepen.io'>CodePen</a>.\n" +
     "</iframe>"
   );
 
@@ -126,7 +126,10 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "    <div class=\"col-sm-5\">\n" +
     "        <pre>{{ vm.data | json }}</pre>\n" +
     "    </div>\n" +
-    "</div>"
+    "</div>\n" +
+    "<hr />\n" +
+    "<iframe height='483' scrolling='no' src='//codepen.io/KasraKhosravi/embed/Jdzppy/?height=483&theme-id=17740&default-tab=html' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/KasraKhosravi/pen/Jdzppy/'>ui-form (simple form example)</a> by Kasra (<a href='http://codepen.io/KasraKhosravi'>@KasraKhosravi</a>) on <a href='http://codepen.io'>CodePen</a>.\n" +
+    "</iframe>"
   );
 
 
