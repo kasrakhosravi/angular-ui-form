@@ -3,6 +3,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
 
   $templateCache.put('ui-form/docs/examples/field-choice/template.html',
     "<h2>Field Choice (ui-field-choice)</h2>\n" +
+    "<hr />\n" +
     "<div class=\"row\">\n" +
     "    <div class=\"col-sm-7\">\n" +
     "        <ui-form ng-model=\"vm.data\" debug=\"vm.debug\" errors=\"vm.errors\" loading=\"vm.loading\">\n" +
@@ -94,8 +95,52 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('ui-form/docs/examples/field-text/template.html',
+    "<h2>Field Text (ui-field-text)</h2>\n" +
+    "<hr />\n" +
+    "<div class=\"row\">\n" +
+    "    <div class=\"col-sm-7\">\n" +
+    "        <ui-form ng-model=\"vm.data\" debug=\"vm.debug\" errors=\"vm.errors\" loading=\"vm.loading\">\n" +
+    "            <ui-field-text property=\"name\"\n" +
+    "                           label=\"Name\"\n" +
+    "                           help=\"Nice to meet you {{ vm.data.name }}\"></ui-field-text>\n" +
+    "            <ui-field-text property=\"title\"\n" +
+    "                           label=\"Title\"\n" +
+    "                           placeholder=\"Developer\"></ui-field-text>\n" +
+    "            <ui-field-text property=\"company\"\n" +
+    "                           readonly=\"true\"\n" +
+    "                           label=\"Company (Disabled)\"\n" +
+    "                           placeholder=\"Ravaj\"></ui-field-text>\n" +
+    "            <ui-field-text property=\"address\"\n" +
+    "                           label=\"Address\"></ui-field-text>\n" +
+    "            <ui-field-text property=\"city\"\n" +
+    "                           label=\"City\"></ui-field-text>\n" +
+    "            <ui-field-text property=\"state\"\n" +
+    "                           label=\"State\"></ui-field-text>\n" +
+    "            <ui-field-text property=\"email\"\n" +
+    "                           required=\"true\"\n" +
+    "                           label=\"Email\"\n" +
+    "                           placeholder=\"email@example.com\"\n" +
+    "                           pattern=\" '^[a-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$' \"></ui-field-text>\n" +
+    "        </ui-form>\n" +
+    "        <div class=\"col-sm-offset-2 col-sm-10\">\n" +
+    "            <button class=\"btn btn-primary\" ng-click=\"vm.save()\">Save</button>\n" +
+    "            <button class=\"btn btn-default\" ng-click=\"vm.saveWithErrors()\">Save, but errors</button>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"col-sm-5\">\n" +
+    "        <pre>{{ vm.data | json }}</pre>\n" +
+    "    </div>\n" +
+    "</div>\n" +
+    "<hr />\n" +
+    "<iframe height='711' scrolling='no' src='//codepen.io/KasraKhosravi/embed/XbwRaW/?height=711&theme-id=17740&default-tab=html' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/KasraKhosravi/pen/XbwRaW/'>XbwRaW</a> by Kasra (<a href='http://codepen.io/KasraKhosravi'>@KasraKhosravi</a>) on <a href='http://codepen.io'>CodePen</a>.\n" +
+    "</iframe>"
+  );
+
+
   $templateCache.put('ui-form/docs/examples/simple-form/template.html',
     "<h2>A very simple form</h2>\n" +
+    "<hr />\n" +
     "<div class=\"row\">\n" +
     "    <div class=\"col-sm-7\">\n" +
     "        <ui-form ng-model=\"vm.data\" debug=\"vm.debug\" errors=\"vm.errors\" loading=\"vm.loading\">\n" +
@@ -107,7 +152,6 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "            <ui-field-text property=\"email\"\n" +
     "                           required=\"true\"\n" +
     "                           label=\"Email\"\n" +
-    "                           placeholder=\"email@example.com\"\n" +
     "                           help=\"This field only allows an email address using pattern attribute.\"\n" +
     "                           pattern=\" '^[a-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$' \"></ui-field-text>\n" +
     "            <ui-field-text property=\"sku\"\n" +
@@ -157,6 +201,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "            <div class=\"list-group\">\n" +
     "                <a ui-sref-active=\"active\" ui-sref=\"ui.form.docs.examples.simple_form\" class=\"list-group-item\">A very simple form</a>\n" +
     "                <a ui-sref-active=\"active\" ui-sref=\"ui.form.docs.examples.field_choice\" class=\"list-group-item\">Field Choice</a>\n" +
+    "                <a ui-sref-active=\"active\" ui-sref=\"ui.form.docs.examples.field_text\" class=\"list-group-item\">Field Text</a>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "\n" +
