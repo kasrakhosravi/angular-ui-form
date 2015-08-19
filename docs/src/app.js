@@ -4,7 +4,8 @@
     angular
         .module('ui.form.docs', [
             'ui.form',
-            'ui.router'
+            'ui.router',
+            'localytics.directives'
         ])
         .config(FormExampleConfig)
     ;

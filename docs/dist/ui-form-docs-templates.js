@@ -26,14 +26,12 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "                             help=\"What would you like to order?\"></ui-field-choice>\n" +
     "            <div ng-switch=\"vm.selectedFood.value\">\n" +
     "                <ui-field-choice property=\"Pizza\"\n" +
-    "                             required=\"true\"\n" +
     "                             label=\"Pizza\"\n" +
     "                             options-root=\"food.pizza\"\n" +
     "                             remote-url=\"http://ui-form-data.getsandbox.com/menu\"\n" +
     "                             value-property=\"topping\"\n" +
     "                             label-property=\"topping\"\n" +
-    "                             ng-switch-when=\"Pizza\"\n" +
-    "                             help=\"You have ordered a pizza with {{ vm.data.Pizza }}\"></ui-field-choice>\n" +
+    "                             ng-switch-when=\"Pizza\"></ui-field-choice>\n" +
     "                <ui-field-choice property=\"Burger\"\n" +
     "                             required=\"true\"\n" +
     "                             label=\"Burger\"\n" +
@@ -41,8 +39,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "                             remote-url=\"http://ui-form-data.getsandbox.com/menu\"\n" +
     "                             value-property=\"type\"\n" +
     "                             label-property=\"type\"\n" +
-    "                             ng-switch-when=\"Burger\"\n" +
-    "                             help=\"You have ordered a {{ vm.data.Burger }}\"></ui-field-choice>\n" +
+    "                             ng-switch-when=\"Burger\"\"></ui-field-choice>\n" +
     "                <ui-field-choice property=\"Pasta\"\n" +
     "                             required=\"true\"\n" +
     "                             label=\"Pasta\"\n" +
@@ -50,8 +47,7 @@ angular.module('ui.form.docs').run(['$templateCache', function($templateCache) {
     "                             remote-url=\"http://ui-form-data.getsandbox.com/menu\"\n" +
     "                             value-property=\"type\"\n" +
     "                             label-property=\"type\"\n" +
-    "                             ng-switch-when=\"Pasta\"\n" +
-    "                             help=\"You have ordered a {{ vm.data.Pasta }}\"></ui-field-choice>\n" +
+    "                             ng-switch-when=\"Pasta\"></ui-field-choice>\n" +
     "            </div>\n" +
     "            <ui-field-choice property=\"Sides\"\n" +
     "                             label=\"Sides\"\n" +

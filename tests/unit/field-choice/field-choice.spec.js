@@ -26,27 +26,24 @@ describe('Field Choice', function() {
         beforeEach(inject(function () {
             scope = $rootScope.$new();
             var formElement = angular.element(
-                '<ui-field-choice ng-model="data" inline-options="inlineOptions" required="true"></ui-field-choice>'
+                '<ui-field-choice ng-model="data" inline-options="inlineOptions"></ui-field-choice>'
             );
             element = $compile(formElement)(scope);
         }));
 
-        it('should fill select options from provided key-valued inline options', function () {
-            compileChoiceField(
-                'inline-options="inlineOptions"'
-            );
+        it('should fill select options from provided key-valued inline options',
+            function () {
+                compileChoiceField(
+                    'inline-options="inlineOptions"'
+                );
 
-            scope.$apply(function () {
-                scope.inlineOptions = {
-                    foo: 'bar',
-                    baz: 'ban'
-                };
+                scope.$apply(function () {
+                    scope.inlineOptions = {foo: 'baz', bar: 'ban'};
+                });
 
-                scope.data = 'ban';
-            });
-
-            expect(element.find('option').length).toBe(2);
-        });
+                expect(element.find('option').length).toBe(2);
+            }
+        );
 
         it('should fill select options from provided associated-array of inline options',
             function () {

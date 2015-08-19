@@ -2,20 +2,22 @@
 
     <!-- Single value select without expanding -->
     <select ng-if="!vm.multiple() && !vm.expanded()"
-            class="form-control"
+            chosen
             ng-model="vm.data"
-            ng-disabled="vm.disabled"
+            allow-single-deselect="true"
+            data-placeholder="{{ 'ui.form.field.choice.unselected_option'| translate }}"
+            no-results-text="'{{ 'ui.form.field.choice.no_result_text'| translate }}'"
             ng-options="option[vm.valueProperty].toString() as option[vm.labelProperty] | translate for option in vm.options">
-        <option value="" ng-if="!vm.required()">{{ 'ui.form.field.choice.unselected_option'|translate }}</option>
     </select>
 
     <!-- Multiple value select without expanding -->
     <select ng-if="vm.multiple() && !vm.expanded()"
-        class="form-control"
-        ng-model="vm.data"
-        ng-disabled="vm.disabled"
-        multiple
-        ng-options="option[vm.valueProperty].toString() as option[vm.labelProperty] | translate for option in vm.options">
+            chosen
+            multiple
+            ng-model="vm.data"
+            data-placeholder="{{ 'ui.form.field.choice.unselected_option'| translate }}"
+            no-results-text="'{{ 'ui.form.field.choice.no_result_text'| translate }}'"
+            ng-options="option[vm.valueProperty].toString() as option[vm.labelProperty] | translate for option in vm.options">
     </select>
 
     <!-- Single value select via radio button -->

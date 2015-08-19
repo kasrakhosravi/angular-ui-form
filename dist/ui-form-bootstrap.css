@@ -209,6 +209,8 @@ ui-field-number input {
 
 ui-field-choice label {
   display: block; }
+ui-field-choice select {
+  width: 200px; }
 
 ui-field-collection .form-group ul {
   margin: 0;

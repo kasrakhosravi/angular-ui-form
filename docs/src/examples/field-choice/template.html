@@ -22,14 +22,12 @@
                              help="What would you like to order?"></ui-field-choice>
             <div ng-switch="vm.selectedFood.value">
                 <ui-field-choice property="Pizza"
-                             required="true"
                              label="Pizza"
                              options-root="food.pizza"
                              remote-url="http://ui-form-data.getsandbox.com/menu"
                              value-property="topping"
                              label-property="topping"
-                             ng-switch-when="Pizza"
-                             help="You have ordered a pizza with {{ vm.data.Pizza }}"></ui-field-choice>
+                             ng-switch-when="Pizza"></ui-field-choice>
                 <ui-field-choice property="Burger"
                              required="true"
                              label="Burger"
@@ -37,8 +35,7 @@
                              remote-url="http://ui-form-data.getsandbox.com/menu"
                              value-property="type"
                              label-property="type"
-                             ng-switch-when="Burger"
-                             help="You have ordered a {{ vm.data.Burger }}"></ui-field-choice>
+                             ng-switch-when="Burger""></ui-field-choice>
                 <ui-field-choice property="Pasta"
                              required="true"
                              label="Pasta"
@@ -46,8 +43,7 @@
                              remote-url="http://ui-form-data.getsandbox.com/menu"
                              value-property="type"
                              label-property="type"
-                             ng-switch-when="Pasta"
-                             help="You have ordered a {{ vm.data.Pasta }}"></ui-field-choice>
+                             ng-switch-when="Pasta"></ui-field-choice>
             </div>
             <ui-field-choice property="Sides"
                              label="Sides"
