@@ -10,8 +10,13 @@ before_script:
   - gem install sass
   - npm install -g bower grunt-cli
   - bower install
+  - node_modules/.bin/webdriver-manager update
+  - npm start > /dev/null &
+  - sleep 1 # give server time to start
 
-script: "grunt test --verbose"
+script:
+  - node_modules/.bin/protractor tests/integration/protractor.conf.js --browsers=Firefox # e2e test
+  - grunt test --verbose # unit test
 
 git:
   depth: 10
