@@ -36,7 +36,7 @@ module.exports = {
     },
 
     clearData: function(pageObject) {
-        var buttons = pageObject.getElement().$$('[ng-click="vm.removeImage(image)"]');
+        var buttons = pageObject.getElement().$$('[ng-click^="vm.removeImage"]');
 
         return buttons.count().then(function (total) {
             var promises = [];
