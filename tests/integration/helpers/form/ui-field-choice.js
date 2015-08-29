@@ -8,9 +8,9 @@ module.exports = {
         return getOptions(pageObject.getElement()).then(function (options) {
             if (options.expanded) {
                 if (options.multiple) {
-                    return  setDataMultipleExpanded(); // TODO setDataMultipleExpanded();
+                    return  setDataMultipleExpanded();
                 } else {
-                    return setDataSingleExpanded(); // TODO setDataSingleExpanded();
+                    return setDataSingleExpanded();
                 }
             } else {
                 if (options.multiple) {
@@ -64,9 +64,9 @@ module.exports = {
         return getOptions(formElement).then(function (options) {
             if (options.expanded) {
                 if (options.multiple) {
-                    return getDataMultipleExpanded(); // TODO getDataMultipleExpanded()
+                    return getDataMultipleExpanded();
                 } else {
-                    return getDataSingleExpanded(); // TODO getDataSingleExpanded()
+                    return getDataSingleExpanded();
                 }
             } else {
                 if (options.multiple) {
