@@ -26,35 +26,39 @@ module.exports = {
                         resolved = false;
 
                     childNodes.count().then(function (total) {
-                        childNodes.each(function (childNodeElement, index) {
-                            childNodeElement.element(by.xpath('./div')).getText().then(function (text) {
-                                if (!resolved) {
-                                    if (firstStep === _.trim(text)) {
-                                        var promise;
+                        if (total > 0) {
+                            childNodes.each(function (childNodeElement, index) {
+                                childNodeElement.element(by.xpath('./div')).getText().then(function (text) {
+                                    if (!resolved) {
+                                        if (firstStep === _.trim(text)) {
+                                            var promise;
 
-                                        if (nodePath.length === 0) {
-                                            promise = isNodeSelected(childNodeElement).then(function (selected) {
-                                                if (!selected) {
-                                                    return childNodeElement.element(by.xpath('./div')).click();
-                                                }
-                                            });
-                                        } else {
-                                            promise = selectNode(childNodeElement, nodePath);
+                                            if (nodePath.length === 0) {
+                                                promise = isNodeSelected(childNodeElement).then(function (selected) {
+                                                    if (!selected) {
+                                                        return childNodeElement.element(by.xpath('./div')).click();
+                                                    }
+                                                });
+                                            } else {
+                                                promise = selectNode(childNodeElement, nodePath);
+                                            }
+
+                                            promise.then(function () {
+                                                resolved = true;
+                                                d.fulfill(true);
+                                            }, d.reject);
+
+                                        } else if (index >= total - 1) {
+                                            d.reject('Could not find node on path "' + originalNodePath.join(' -> ') + '" in ui-field-tree');
                                         }
-
-                                        promise.then(function () {
-                                            resolved = true;
-                                            d.fulfill(true);
-                                        }, d.reject);
-
-                                    } else if (index >= total - 1) {
-                                        d.reject('Could not find node on path "' + originalNodePath.join(' -> ') + '" in ui-field-tree');
                                     }
-                                }
-                            }, function (err) {
-                                d.reject(err);
+                                }, function (err) {
+                                    d.reject(err);
+                                });
                             });
-                        });
+                        } else {
+                            d.reject('Could not find node on path "' + originalNodePath.join(' -> ') + '" in ui-field-tree');
+                        }
                     });
 
                     return d.promise;
