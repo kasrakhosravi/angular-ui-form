@@ -60,6 +60,49 @@
             // Set selected option when data is changed
             $scope.$watch('vm.data', updateSelectedOption);
 
+            // Reset data if current data is not in options.
+            $scope.$watch('vm.options', function (options) {
+                var i, c, values = [];
+
+                if (!options) {
+                    return;
+                }
+
+                if (!options.length) {
+                    if (vm.multiple()) {
+                        vm.data = [];
+                    } else {
+                        vm.data = null;
+                    }
+                }
+
+                for (i = 0, c = options.length; i < c; i++) {
+                    values.push(options[i][vm.valueProperty]);
+                }
+
+                if (vm.multiple()) {
+                    if (!vm.data.length) {
+                        return;
+                    }
+
+                    for (i = 0, c = vm.data.length; i < c; i++) {
+                        if (values.indexOf(vm.data[i]) === -1) {
+                            vm.data.splice(i, 1);
+                            i--;
+                            c--;
+                        }
+                    }
+                } else {
+                    if (values.indexOf(vm.data) === -1) {
+                        if (vm.required()) {
+                            vm.data = options[0][vm.valueProperty];
+                        } else {
+                            vm.data = null;
+                        }
+                    }
+                }
+            });
+
             /**
              * Default scope variables
              */
