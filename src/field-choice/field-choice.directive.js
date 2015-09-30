@@ -24,7 +24,8 @@
         });
 
         function FieldChoiceLink($scope) {
-            var vm = $scope.vm;
+            var vm = $scope.vm,
+                remoteIsDone = false;
 
             // Defaults
             setDefaults();
@@ -61,19 +62,96 @@
             $scope.$watch('vm.data', updateSelectedOption);
 
             // Reset data if current data is not in options.
-            $scope.$watch('vm.options', function (options) {
-                var i, c, values = [];
+            $scope.$watch('vm.options', clearMissingData);
 
-                if (!options) {
-                    return;
+            /**
+             * Default scope variables.
+             */
+            function setDefaults() {
+                if (typeof vm.valueProperty === 'undefined') {
+                    vm.valueProperty = 'value';
                 }
 
-                if (!options.length) {
-                    if (vm.multiple()) {
-                        vm.data = [];
-                    } else {
-                        vm.data = null;
+                if (typeof vm.labelProperty === 'undefined') {
+                    vm.labelProperty = 'label';
+                }
+
+                if (typeof vm.options === 'undefined') {
+                    vm.options = [];
+                }
+
+                if (typeof vm.data === 'undefined' && vm.multiple()) {
+                    vm.data = [];
+                }
+            }
+
+            /**
+             * Updates select options based on remote route and parameters.
+             */
+            function updateChoiceWidget() {
+                vm.loading = true;
+                formApi.get(vm.remoteUrl, vm.remoteParams()).then(function (options) {
+                    vm.loading = false;
+                    remoteIsDone = true;
+
+                    if (vm.optionsRoot) {
+                        options = formUtil.deepGet(options, vm.optionsRoot);
                     }
+
+                    vm.options = formUtil.objectValues(normalizeOptions(options)) || [];
+
+                    if (typeof vm.data === 'undefined' && vm.options.length > 0) {
+                        if (!vm.multiple()) {
+                            vm.data = vm.options[0][vm.valueProperty].toString();
+                        }
+                    } else {
+                        updateSelectedOption();
+                    }
+                }, function() {
+                    remoteIsDone = true;
+                    vm.disabled = true;
+                    vm.loading = false;
+                    vm.raiseError('ui.form.field.choice.remote_error');
+                });
+            }
+
+            /**
+             * Updates selected option based on current data.
+             */
+            function updateSelectedOption() {
+                if (vm.multiple()) {
+                    vm.selected = vm.options.filter(function (option) {
+                        return vm.data.indexOf(option[vm.valueProperty].toString());
+                    });
+                } else {
+                    vm.selected = vm.options.filter(function (option) {
+                        return vm.data === option[vm.valueProperty].toString();
+                    });
+
+                    if (vm.selected.length) {
+                        vm.selected = vm.selected[0];
+                    }
+                }
+            }
+
+            /**
+             * Removes data which is missing from updated options.
+             *
+             * @param {object} options
+             */
+            function clearMissingData(options) {
+                var i, c, values = [];
+
+                if (!options || typeof options !== 'object' || !options.length) {
+                    if (!vm.remoteUrl || remoteIsDone) {
+                        if (vm.multiple()) {
+                            vm.data = [];
+                        } else {
+                            vm.data = null;
+                        }
+                    }
+
+                    return;
                 }
 
                 for (i = 0, c = options.length; i < c; i++) {
@@ -99,74 +177,6 @@
                         } else {
                             vm.data = null;
                         }
-                    }
-                }
-            });
-
-            /**
-             * Default scope variables
-             */
-            function setDefaults() {
-                if (typeof vm.valueProperty === 'undefined') {
-                    vm.valueProperty = 'value';
-                }
-
-                if (typeof vm.labelProperty === 'undefined') {
-                    vm.labelProperty = 'label';
-                }
-
-                if (typeof vm.options === 'undefined') {
-                    vm.options = [];
-                }
-
-                if (typeof vm.data === 'undefined' && vm.multiple()) {
-                    vm.data = [];
-                }
-            }
-
-            /**
-             * Updates select options based on remote route and parameters
-             */
-            function updateChoiceWidget() {
-                vm.loading = true;
-                formApi.get(vm.remoteUrl, vm.remoteParams()).then(function (options) {
-                    vm.loading = false;
-
-                    if (vm.optionsRoot) {
-                        options = formUtil.deepGet(options, vm.optionsRoot);
-                    }
-
-                    vm.options = formUtil.objectValues(normalizeOptions(options)) || [];
-
-                    if (typeof vm.data === 'undefined' && vm.options.length > 0) {
-                        if (!vm.multiple()) {
-                            vm.data = vm.options[0][vm.valueProperty].toString();
-                        }
-                    } else {
-                        updateSelectedOption();
-                    }
-                }, function() {
-                    vm.disabled = true;
-                    vm.loading = false;
-                    vm.raiseError('ui.form.field.choice.remote_error');
-                });
-            }
-
-            /**
-             * Updates selected option based on current data
-             */
-            function updateSelectedOption() {
-                if (vm.multiple()) {
-                    vm.selected = vm.options.filter(function (option) {
-                        return vm.data.indexOf(option[vm.valueProperty].toString());
-                    });
-                } else {
-                    vm.selected = vm.options.filter(function (option) {
-                        return vm.data === option[vm.valueProperty].toString();
-                    });
-
-                    if (vm.selected.length) {
-                        vm.selected = vm.selected[0];
                     }
                 }
             }
