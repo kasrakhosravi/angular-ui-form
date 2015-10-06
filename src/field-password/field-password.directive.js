@@ -1,33 +1,35 @@
 (function(angular) {
     'use strict';
 
+    /**
+     * @desc: password directive that can be used across your app to crete password fields.
+     * Instead of multiple fields (password and confirm password); we have implemented a single field with the option to mask/unmask password.
+     * @example: <ui-field-password label="Password" property="password"></ui-field-password>
+     */
     angular
         .module('ui.form')
         .directive('uiFieldPassword', uiFieldPassword);
 
     function uiFieldPassword(formFactory) {
         return formFactory.create({
-            templateUrl: 'ui-form/field-password/field-password.html',
-            scope: {
-                confirmLabel: '@'
-            },
-            link: function($scope) {
-                var vm = $scope.vm;
+            link: FieldPasswordLink,
+            templateUrl: 'ui-form/field-password/field-password.html'
+        });
 
-                vm.confirmValue = '';
+        function FieldPasswordLink ($scope, $element, $attrs) {
+            var vm = $scope.vm;
 
-                $scope.$watch('vm.data', checkValues);
-                $scope.$watch('vm.confirmValue', checkValues);
+            vm.mode = 'password';
+            vm.toggleMode = toggleMode;
 
-                function checkValues() {
-                    if (vm.confirmValue !== vm.data) {
-                        vm.raiseError('ui.field.password.mismatch');
-                    } else {
-                        vm.resetErrors();
-                    }
+            function toggleMode () {
+                if (vm.mode === 'password') {
+                    vm.mode = 'text';
+                } else {
+                    vm.mode = 'password';
                 }
             }
-        });
+        }
     }
 
 })(angular);
