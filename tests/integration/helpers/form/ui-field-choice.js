@@ -5,7 +5,7 @@ module.exports = {
     setData: function(pageObject, data) {
         var formElement = pageObject.getElement();
 
-        return getOptions(pageObject.getElement()).then(function (options) {
+        return getOptions(formElement).then(function (options) {
             if (options.expanded) {
                 if (options.multiple) {
                     return  setDataMultipleExpanded();
@@ -128,9 +128,47 @@ module.exports = {
         }
     },
 
-    // TODO Implement.
-    clearData: function() {
-        return protractor.promise.when(true);
+    clearData: function(pageObject) {
+        var formElement = pageObject.getElement();
+
+        return getOptions(formElement).then(function (options) {
+            if (options.expanded) {
+                if (options.multiple) {
+                    return  clearDataMultipleExpanded();
+                } else {
+                    return clearDataSingleExpanded();
+                }
+            } else {
+                if (options.multiple) {
+                    return clearDataMultiple();
+                } else {
+                    return clearDataSingle();
+                }
+            }
+        });
+
+        // TODO Implement
+        function clearDataSingle() {
+            return protractor.promise.when(true);
+        }
+
+        // TODO Implement
+        function clearDataSingleExpanded() {
+            return protractor.promise.when(true)
+        }
+
+        // TODO Implement
+        function clearDataMultipleExpanded() {
+            return protractor.promise.when(true)
+        }
+
+        function clearDataMultiple() {
+            var options = formElement.element(by.model('vm.data')).all(by.css('option:checked'));
+
+            return options.map(function (element) {
+                return element.click();
+            });
+        }
     },
     getErrors: DefaultHelper.getErrors
 };
