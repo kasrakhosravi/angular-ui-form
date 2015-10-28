@@ -126,7 +126,8 @@ module.exports = function ( grunt ) {
                         expand: true,
                         cwd: '<%= dist_dir %>',
                         src: [ '*.js', '!*.min.js' ],
-                        dest: '<%= dist_dir %>'
+                        dest: '<%= dist_dir %>',
+                        ext: '.min.js'
                     }
                 ]
             }
