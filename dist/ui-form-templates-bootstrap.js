@@ -97,10 +97,6 @@ angular.module('ui.form').run(['$templateCache', function($templateCache) {
     "            <datepicker ng-model=\"vm.data\" min-date=\"vm.minDate()\" show-weeks=\"true\"></datepicker>\n" +
     "        </div>\n" +
     "\n" +
-    "        <div ng-switch-when=\"persian\">\n" +
-    "            <persian-datepicker ng-model=\"vm.data\" min-date=\"vm.minDate()\" show-weeks=\"true\" starting-day=\"6\"></persian-datepicker>\n" +
-    "        </div>\n" +
-    "\n" +
     "        <!-- TODO: Add more calendars here -->\n" +
     "    </div>\n" +
     "</ui-field-row>\n"

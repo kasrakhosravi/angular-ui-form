@@ -33,11 +33,10 @@
     "angular-ui-tree": "~2.2.0",
     "angular-ui-router": "~0.2.15",
     "angular-material": "~0.10.0",
-    "angular-bootstrap": "~0.13.1",
+    "angular-bootstrap": "~0.14.0",
     "textAngular": "~1.4.2",
     "plupload": "~2.1.4",
     "angular-fcsa-number": "~1.5.3",
-    "angular-bootstrap-persian-datepicker": "https://github.com/AminRahimi/angular-bootstrap-persian-datepicker.git",
     "ui-breadcrumb": "~0.0.4"
   },
   "resolutions": {
