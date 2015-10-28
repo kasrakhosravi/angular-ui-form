@@ -56,11 +56,6 @@ module.exports = {
             'bower_components/plupload/js/moxie.js',
             'bower_components/plupload/js/plupload.dev.js',
 
-            // Date
-            'bower_components/angular-bootstrap-persian-datepicker/persiandate.js',
-            'bower_components/angular-bootstrap-persian-datepicker/persian-datepicker-tpls.js',
-            'bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js',
-
             // Utility
             'bower_components/angular-fcsa-number/src/fcsaNumber.js'
         ]

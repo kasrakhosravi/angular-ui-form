@@ -10,7 +10,6 @@
             // Libraries
             'ui.bootstrap',
             'ui.bootstrap.datepicker',
-            'ui.bootstrap.persian.datepicker',
             'pascalprecht.translate',
             'LocalStorageModule',
             'textAngular',
