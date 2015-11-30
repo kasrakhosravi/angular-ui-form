@@ -339,7 +339,7 @@ module.exports = function ( grunt ) {
     grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
         var jsFiles = filterForJS( this.filesSrc );
 
-        grunt.file.copy( 'tests/karma/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', {
+        grunt.file.copy( 'test/karma/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', {
             process: function ( contents, path ) {
                 return grunt.template.process( contents, {
                     data: {

@@ -28,7 +28,7 @@ module.exports = {
             ]
         },
         tests: [
-            'tests/unit/**/*.spec.js'
+            'test/unit/**/*.spec.js'
         ]
     },
 

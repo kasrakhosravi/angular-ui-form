@@ -1,6 +1,13 @@
 describe('Field Text', function() {
-    var $compile,
-        $rootScope;
+    var $compile, $rootScope, scope, element;
+
+    function compileTextField(config) {
+        scope = $rootScope.$new();
+        var formElement = angular.element(
+            '<ui-field-text ng-model="data" ' + config + '></ui-field-text>'
+        );
+        element = $compile(formElement)(scope);
+    }
 
     beforeEach(module('ui.form'));
 
@@ -10,13 +17,7 @@ describe('Field Text', function() {
     }));
 
     it('should hold a value', function() {
-        var scope = $rootScope.$new();
-
-        var formElement = angular.element(
-            '<ui-field-text ng-model="data"></ui-field-text>'
-        );
-
-        var element = $compile(formElement)(scope);
+        compileTextField();
 
         scope.$apply(function () {
             scope.data = 'foo';
@@ -26,13 +27,7 @@ describe('Field Text', function() {
     });
 
     it('should have a placeholder', function() {
-        var scope = $rootScope.$new();
-
-        var formElement = angular.element(
-            '<ui-field-text ng-model="data" placeholder="foo"></ui-field-text>'
-        );
-
-        var element = $compile(formElement)(scope);
+        compileTextField('placeholder="foo"');
 
         scope.$apply(function () {
             scope.data = '';
@@ -42,13 +37,7 @@ describe('Field Text', function() {
     });
 
     it('should have a placeholder when input is cleared after having some data', function() {
-        var scope = $rootScope.$new();
-
-        var formElement = angular.element(
-            '<ui-field-text ng-model="data" placeholder="foo"></ui-field-text>'
-        );
-
-        var element = $compile(formElement)(scope);
+        compileTextField('placeholder="foo"');
 
         scope.$apply(function () {
             scope.data = 'bar';
@@ -60,5 +49,4 @@ describe('Field Text', function() {
 
         expect(element.find('input[type=text]').prop('placeholder')).toEqual('foo');
     });
-
 });

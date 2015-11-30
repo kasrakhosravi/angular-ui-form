@@ -10,16 +10,16 @@
             link: FieldChoiceLink,
             templateUrl: 'ui-form/field-choice/field-choice.html',
             scope: {
-                inlineOptions: '=?',
-                remoteUrl: '@?',
-                remoteParams: '&?',
-                optionsRoot: '@?',
-                valueProperty: '@?',
-                labelProperty: '@?',
-                selected: '=?',
-                required: '&?',
+                expanded: '&?',
                 multiple: '&?',
-                expanded: '&?'
+                required: '&?',
+                selected: '=?',
+                remoteUrl: '@?',
+                optionsRoot: '@?',
+                remoteParams: '&?',
+                inlineOptions: '=?',
+                valueProperty: '@?',
+                labelProperty: '@?'
             }
         });
 
@@ -40,10 +40,8 @@
 
                     vm.options = normalizeOptions(inlineOptions);
 
-                    if (typeof vm.data === 'undefined' && vm.options.length > 0) {
-                        if (!vm.multiple()) {
-                            vm.data = vm.options[0][vm.valueProperty].toString();
-                        }
+                    if (!vm.data && vm.options.length > 0 && !vm.multiple() && vm.required()) {
+                        vm.data = vm.options[0][vm.valueProperty].toString();
                     }
                 }
             );
@@ -100,8 +98,8 @@
 
                     vm.options = formUtil.objectValues(normalizeOptions(options)) || [];
 
-                    if (typeof vm.data === 'undefined' && vm.options.length > 0) {
-                        if (!vm.multiple()) {
+                    if (!vm.data && vm.options.length > 0) {
+                        if (!vm.multiple() && vm.required()) {
                             vm.data = vm.options[0][vm.valueProperty].toString();
                         }
                     } else {
@@ -119,6 +117,10 @@
              * Updates selected option based on current data.
              */
             function updateSelectedOption() {
+                if (!vm.data) {
+                    return;
+                }
+
                 if (vm.multiple()) {
                     vm.selected = vm.options.filter(function (option) {
                         return vm.data.indexOf(option[vm.valueProperty].toString());
@@ -141,6 +143,10 @@
              */
             function clearMissingData(options) {
                 var i, c, values = [];
+
+                if (!vm.data) {
+                    return;
+                }
 
                 if (!options || typeof options !== 'object' || !options.length) {
                     if (!vm.remoteUrl || remoteIsDone) {

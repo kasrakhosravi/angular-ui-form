@@ -1,8 +1,5 @@
 describe('Field Choice', function() {
-    var $compile,
-        $rootScope,
-        scope,
-        element;
+    var $compile, $rootScope, scope, element;
 
     function compileChoiceField(config) {
         scope = $rootScope.$new();
@@ -20,18 +17,8 @@ describe('Field Choice', function() {
     }));
 
     describe('inlineOptions', function() {
-        var scope,
-            element;
 
-        beforeEach(inject(function () {
-            scope = $rootScope.$new();
-            var formElement = angular.element(
-                '<ui-field-choice ng-model="data" inline-options="inlineOptions" required="true"></ui-field-choice>'
-            );
-            element = $compile(formElement)(scope);
-        }));
-
-        it('should fill select options from provided key-valued inline options', function () {
+        it('should fill select options from provided key-valued inline options when it is not required', function () {
             compileChoiceField(
                 'inline-options="inlineOptions"'
             );
@@ -41,14 +28,12 @@ describe('Field Choice', function() {
                     foo: 'bar',
                     baz: 'ban'
                 };
-
-                scope.data = 'ban';
             });
 
-            expect(element.find('option').length).toBe(2);
+            expect(element.find('option').length).toBe(3);
         });
 
-        it('should fill select options from provided associated-array of inline options',
+        it('should fill select options from provided associated-array of inline options when it is not required',
             function () {
                 compileChoiceField(
                     'inline-options="inlineOptions" label-property="label" value-property="value"'
@@ -59,15 +44,13 @@ describe('Field Choice', function() {
                         {label: 'foo', value: 'bar'},
                         {label: 'baz', value: 'ban'}
                     ];
-
-                    scope.data = 'ban';
                 });
 
-                expect(element.find('option').length).toBe(2);
+                expect(element.find('option').length).toBe(3);
             }
         );
 
-        it('should fill select options from provided simple array of inline options', function () {
+        it('should fill select options from provided simple array of inline options when it is not required', function () {
             compileChoiceField(
                 'inline-options="inlineOptions" label-property="label" value-property="value"'
             );
@@ -76,7 +59,7 @@ describe('Field Choice', function() {
                 scope.inlineOptions = ['foo', 'bar'];
             });
 
-            expect(element.find('option').length).toBe(2);
+            expect(element.find('option').length).toBe(3);
         });
 
         it('should have value of selected option', function () {
@@ -104,5 +87,32 @@ describe('Field Choice', function() {
             expect(element.find('select').val()).toBe('1');
         });
 
+    });
+
+
+    describe('required', function() {
+
+        it('should have an extra field with null value when it is a combo box with required scope set to true',
+            function() {
+                compileChoiceField(
+                    'inline-options="inlineOptions" required="required"'
+                );
+
+                scope.$apply(function () {
+                    scope.inlineOptions = {
+                        foo: 'bar',
+                        baz: 'ban'
+                    };
+                });
+
+                expect(element.find('option').length).toBe(3);
+
+                scope.$apply(function () {
+                    scope.required = true;
+                });
+
+                expect(element.find('option').length).toBe(2);
+            }
+        );
     });
 });
